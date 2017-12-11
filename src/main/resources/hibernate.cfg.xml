@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/wzorce</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+        <property name="connection.username">marcin</property>
+        <property name="connection.password">marcin</property>
+
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <mapping class="carconf.entity.Color"/>
+        <mapping class="carconf.entity.ConfigurationsLevelEngine"/>
+        <mapping class="carconf.entity.Model"/>
+        <mapping class="carconf.entity.Engine"/>
+        <mapping class="carconf.entity.EquipmentElement"/>
+        <mapping class="carconf.entity.EquipmentLevel"/>
+        <mapping class="carconf.entity.EquipmentType"/>
+        <mapping class="carconf.entity.Wheel"/>
+    </session-factory>
+</hibernate-configuration>
