@@ -1,16 +1,23 @@
 package carconf;
 
-import carconf.entity.Model;
-import carconf.service.impl.ModelServiceImpl;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-import java.util.List;
+public class App extends Application{
+    private Stage window;
 
-public class App {
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        window = primaryStage;
+        window.setTitle("carConfiguratorApp");
+        Scene scene = new Scene(new VBox(), 1024, 768);
+        window.setScene(scene);
+        window.show();
+    }
+
     public static void main(String[] args) {
-        ModelServiceImpl modelService = new ModelServiceImpl();
-        List<Model> allModels = modelService.getAllModels();
-        for(Model m : allModels){
-            System.out.println(m);
-        }
+        launch(args);
     }
 }
