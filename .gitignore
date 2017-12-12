@@ -24,3 +24,7 @@ hs_err_pid*
 # intelij packages
 /.idea/
 
+
+/src/main/resources/hibernate.cfg.xml
+carConfiguratorApp.iml
+/target/*
