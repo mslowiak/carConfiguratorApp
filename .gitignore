@@ -24,5 +24,3 @@ hs_err_pid*
 # intelij packages
 /.idea/
 
-# ignore hibernate.cfg
-/src/main/resources/hibernate.cfg.xml
