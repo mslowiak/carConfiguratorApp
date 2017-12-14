@@ -1,5 +1,6 @@
 package carconf;
 
+import carconf.scene.StartScene;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -14,6 +15,7 @@ public class App extends Application{
         window.setTitle("carConfiguratorApp");
         Scene scene = new Scene(new VBox(), 1024, 768);
         window.setScene(scene);
+        new StartScene(scene);
         window.show();
     }
 
