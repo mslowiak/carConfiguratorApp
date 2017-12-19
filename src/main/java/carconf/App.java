@@ -13,7 +13,7 @@ public class App extends Application{
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
         window.setTitle("carConfiguratorApp");
-        Scene scene = new Scene(new VBox(), 1024, 768);
+        Scene scene = new Scene(new VBox(), 1600, 1000);
         window.setScene(scene);
         new StartScene(scene);
         window.show();
