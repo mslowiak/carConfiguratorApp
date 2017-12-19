@@ -1,5 +1,6 @@
 package carconf.controller;
 
+import carconf.scene.ChooseCarScene;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,7 +20,7 @@ public class StartSceneController {
     @FXML
     void initialize(){
         startButton.setOnAction(e ->{
-            System.out.println("Chce zaczac tworzyc samochodzik");
+            new ChooseCarScene(scene);
         });
     }
 
