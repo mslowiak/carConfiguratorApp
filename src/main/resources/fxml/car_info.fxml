@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="anchor_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="262.0" prefWidth="400.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="carImageView" fitHeight="160.0" fitWidth="272.0" layoutX="67.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="carDesriptionLabel" alignment="CENTER" layoutX="9.0" layoutY="189.0" prefHeight="35.0" prefWidth="385.0" text="Nazwa auta" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="priceLabel" layoutX="247.0" layoutY="224.0" prefHeight="27.0" prefWidth="139.0" text="już od: 70 000 PLN" textFill="#ff4000">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <RadioButton fx:id="radioButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="21.0" />
+   </children>
+</fx:root>
