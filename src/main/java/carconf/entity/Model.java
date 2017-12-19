@@ -28,6 +28,12 @@ public class Model {
     @Column(name = "length", nullable = false)
     private int length;
 
+    @Column(name = "BasicPrice", nullable = false)
+    private float basicPrice;
+
+    @Column(name = "Photo", nullable = false)
+    private String photoUrl;
+
     @OneToMany(mappedBy="model")
     private List<Color> colors;
 
@@ -91,6 +97,22 @@ public class Model {
 
     public void setLength(int length) {
         this.length = length;
+    }
+
+    public float getBasicPrice() {
+        return basicPrice;
+    }
+
+    public void setBasicPrice(float basicPrice) {
+        this.basicPrice = basicPrice;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     public List<Color> getColors() {
