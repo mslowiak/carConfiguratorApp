@@ -16,6 +16,7 @@ import java.util.List;
 public class ChooseCarSceneController {
 
     private Scene scene;
+    private ToggleGroup radiosGroup;
 
     @FXML
     private Label topLabel;
@@ -26,10 +27,13 @@ public class ChooseCarSceneController {
     @FXML
     private Button goNextButton;
 
+
     @FXML
     void initialize(){
+        radiosGroup = new ToggleGroup();
         goNextButton.setOnAction(e ->{
-            new ChooseEquipmentLevelScene(scene);
+            ChooseEquipmentLevelScene chooseEquipmentLevelScene = new ChooseEquipmentLevelScene(scene);
+            chooseEquipmentLevelScene.getEquipmentLevelSceneController().setChoseCarModel(radiosGroup.getSelectedToggle().getUserData().toString());
         });
     }
 
@@ -42,14 +46,14 @@ public class ChooseCarSceneController {
         List<Model> allModels = modelService.getAllModels();
         int column = 0;
         int row = 0;
-        ToggleGroup toggleGroup = new ToggleGroup();
         for (int i=0; i<allModels.size(); ++i){
             Model model = allModels.get(i);
             if(model.getPhotoUrl() != null){
                 CarInfo carInfo = new CarInfo(model.getBasicPrice(),
                         model.getBrand() + " " + model.getName(),
                         model.getPhotoUrl());
-                carInfo.getRadioButton().setToggleGroup(toggleGroup);
+                carInfo.getRadioButton().setUserData(model.getModelId());
+                carInfo.getRadioButton().setToggleGroup(radiosGroup);
                 gridPane.add(carInfo, row, column);
                 row++;
                 if(row == 3){
