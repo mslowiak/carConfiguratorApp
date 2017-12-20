@@ -1,12 +1,10 @@
 package carconf.controller;
 
-import carconf.HibernateUtil;
 import carconf.element.CarInfo;
 import carconf.entity.Model;
+import carconf.scene.ChooseEquipmentLevelScene;
 import carconf.service.impl.ModelServiceImpl;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,6 +25,13 @@ public class ChooseCarSceneController {
 
     @FXML
     private Button goNextButton;
+
+    @FXML
+    void initialize(){
+        goNextButton.setOnAction(e ->{
+            new ChooseEquipmentLevelScene(scene);
+        });
+    }
 
     public void setScene(Scene scene) {
         this.scene = scene;

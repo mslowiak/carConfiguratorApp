@@ -10,13 +10,13 @@ import java.io.IOException;
 public class ChooseCarScene {
     private Scene scene;
     private FXMLLoader loader;
-    private ChooseCarSceneController startSceneController;
+    private ChooseCarSceneController carSceneController;
 
     public ChooseCarScene(Scene scene) {
         this.scene = scene;
         setScene();
         setController();
-        startSceneController.displayCars();
+        carSceneController.displayCars();
     }
 
     private void setScene() {
@@ -32,8 +32,8 @@ public class ChooseCarScene {
     }
 
     private void setController() {
-        startSceneController = loader.getController();
-        startSceneController.setScene(scene);
+        carSceneController = loader.getController();
+        carSceneController.setScene(scene);
     }
 
 }
