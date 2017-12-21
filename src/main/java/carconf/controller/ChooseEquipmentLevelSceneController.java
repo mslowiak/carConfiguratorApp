@@ -1,5 +1,6 @@
 package carconf.controller;
 
+import carconf.element.EquipmentLevelInfo;
 import carconf.entity.EquipmentLevel;
 import carconf.service.impl.EquipmentLevelServiceImpl;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ChooseEquipmentLevelSceneController {
@@ -19,7 +21,7 @@ public class ChooseEquipmentLevelSceneController {
     private Label topLabel;
 
     @FXML
-    private VBox equipmentLevelsVbox;
+    private VBox equipmentLevelsVBox;
 
     @FXML
     private Button goBackButton;
@@ -48,8 +50,9 @@ public class ChooseEquipmentLevelSceneController {
     public void displayEquipmentLevelScene(){
         EquipmentLevelServiceImpl equipmentLevelService = new EquipmentLevelServiceImpl();
         List<EquipmentLevel> equipmentLevelsByModelId = equipmentLevelService.getEquipmentLevelsByModelId(choseModelId);
-        for (EquipmentLevel e : equipmentLevelsByModelId){
-            System.out.println( e.getName());
+        for (int i=0; i<equipmentLevelsByModelId.size(); ++i){
+            EquipmentLevel e = equipmentLevelsByModelId.get(i);
+            equipmentLevelsVBox.getChildren().add(new EquipmentLevelInfo((i+1) + ".", e.getName(), new DecimalFormat("#").format(e.getPrice()) + " PLN"));
         }
     }
 }
