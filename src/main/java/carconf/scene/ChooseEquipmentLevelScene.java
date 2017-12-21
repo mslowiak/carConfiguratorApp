@@ -16,7 +16,6 @@ public class ChooseEquipmentLevelScene {
         this.scene = scene;
         setScene();
         setController();
-        equipmentLevelSceneController.displayEquipmentLevelScene();
     }
 
 

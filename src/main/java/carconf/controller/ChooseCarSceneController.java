@@ -33,7 +33,7 @@ public class ChooseCarSceneController {
         radiosGroup = new ToggleGroup();
         goNextButton.setOnAction(e ->{
             ChooseEquipmentLevelScene chooseEquipmentLevelScene = new ChooseEquipmentLevelScene(scene);
-            chooseEquipmentLevelScene.getEquipmentLevelSceneController().setChoseCarModel(radiosGroup.getSelectedToggle().getUserData().toString());
+            chooseEquipmentLevelScene.getEquipmentLevelSceneController().setChoseCarModel(Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString()));
         });
     }
 
