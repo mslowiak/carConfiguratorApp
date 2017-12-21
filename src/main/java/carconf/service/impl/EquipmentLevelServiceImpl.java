@@ -7,9 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 public class EquipmentLevelServiceImpl implements EquipmentLevelService {
@@ -23,6 +21,20 @@ public class EquipmentLevelServiceImpl implements EquipmentLevelService {
         CriteriaQuery<EquipmentLevel> criteria = builder.createQuery(EquipmentLevel.class);
         Root<EquipmentLevel> root = criteria.from(EquipmentLevel.class);
         criteria.select(root);
+        Query<EquipmentLevel> q = session.createQuery(criteria);
+        List<EquipmentLevel> equipmentLevelList = q.getResultList();
+        session.getTransaction().commit();
+        return equipmentLevelList;
+    }
+
+    @Override
+    public List<EquipmentLevel> getEquipmentLevelsByModelId(int modelId) {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<EquipmentLevel> criteria = builder.createQuery(EquipmentLevel.class);
+        Root<EquipmentLevel> root = criteria.from(EquipmentLevel.class);
+        criteria.select(root).where(builder.equal(root.get("model"), modelId));
         Query<EquipmentLevel> q = session.createQuery(criteria);
         List<EquipmentLevel> equipmentLevelList = q.getResultList();
         session.getTransaction().commit();
