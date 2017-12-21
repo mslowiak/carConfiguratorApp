@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="carconf.controller.StartSceneController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="carconf.controller.StartSceneController">
    <children>
       <Label fx:id="welcomeLabel" text="Witaj w konfiguratorze własnego auta!">
          <font>
@@ -23,18 +22,21 @@
             <Insets />
          </opaqueInsets>
          <VBox.margin>
-            <Insets top="200.0" />
+            <Insets top="350.0" />
          </VBox.margin>
       </Button>
-      <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="30.0" prefWidth="200.0">
          <VBox.margin>
-            <Insets top="250.0" />
+            <Insets top="350.0" />
          </VBox.margin>
          <children>
             <Label fx:id="createdByLabel" text="Created by mslowiak &amp; kn44ps / 2017">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
             </Label>
          </children>
       </HBox>
