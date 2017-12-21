@@ -48,18 +48,16 @@ public class ChooseCarSceneController {
         int row = 0;
         for (int i=0; i<allModels.size(); ++i){
             Model model = allModels.get(i);
-            if(model.getPhotoUrl() != null){
-                CarInfo carInfo = new CarInfo(model.getBasicPrice(),
-                        model.getBrand() + " " + model.getName(),
-                        model.getPhotoUrl());
-                carInfo.getRadioButton().setUserData(model.getModelId());
-                carInfo.getRadioButton().setToggleGroup(radiosGroup);
-                gridPane.add(carInfo, row, column);
-                row++;
-                if(row == 3){
-                    row = 0;
-                    column++;
-                }
+            CarInfo carInfo = new CarInfo(model.getBasicPrice(),
+                    model.getBrand() + " " + model.getName(),
+                    model.getPhotoUrl());
+            carInfo.getRadioButton().setUserData(model.getModelId());
+            carInfo.getRadioButton().setToggleGroup(radiosGroup);
+            gridPane.add(carInfo, row, column);
+            row++;
+            if(row == 3){
+                row = 0;
+                column++;
             }
         }
     }
