@@ -4,10 +4,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 
-public class EquipmentLevelInfo {
+public class EquipmentLevelInfo extends HBox{
 
     @FXML
     private Label idLabel;
