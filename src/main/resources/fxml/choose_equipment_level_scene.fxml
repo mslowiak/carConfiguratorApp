@@ -24,7 +24,7 @@
       </HBox>
       <ScrollPane prefHeight="772.0" prefWidth="1500.0">
          <content>
-            <VBox fx:id="equipmentLevelsVbox" alignment="CENTER" prefHeight="534.0" prefWidth="916.0" />
+            <VBox fx:id="equipmentLevelsVBox" alignment="CENTER" prefHeight="534.0" prefWidth="916.0" />
          </content>
       </ScrollPane>
       <GridPane minHeight="-Infinity" prefHeight="70.0" prefWidth="924.0">
