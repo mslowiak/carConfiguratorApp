@@ -1,5 +1,7 @@
 package carconf.entity;
 
+import carconf.car_assembling.CarItems;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,7 +9,7 @@ import javax.persistence.*;
         name = "wheels",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"level_ID", "description"})}
 )
-public class Wheel {
+public class Wheel implements CarItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "wheel_ID", nullable = false)
@@ -88,4 +90,8 @@ public class Wheel {
         this.photoUrl = photoUrl;
     }
 
+    @Override
+    public String getDescribtion() {
+        return null;
+    }
 }

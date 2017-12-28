@@ -1,5 +1,7 @@
 package carconf.entity;
 
+import carconf.car_assembling.CarItems;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
 @Table(name = "equipment_types",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"description"})}
 )
-public class EquipmentType {
+public class EquipmentType implements CarItems {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -57,5 +59,10 @@ public class EquipmentType {
         equipmentElement.setEquipmentType(null);
 
         return equipmentElement;
+    }
+
+    @Override
+    public String getDescribtion() {
+        return null;
     }
 }

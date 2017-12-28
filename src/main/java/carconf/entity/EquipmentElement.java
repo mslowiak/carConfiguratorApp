@@ -1,10 +1,12 @@
 package carconf.entity;
 
+import carconf.car_assembling.CarItems;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "equipment_elements")
-public class EquipmentElement {
+public class EquipmentElement implements CarItems {
     @Id
     @Column(name = "elem_ID", nullable = false)
     private int elemId;
@@ -64,5 +66,10 @@ public class EquipmentElement {
 
     public void setEquipmentType(EquipmentType equipmentType) {
         this.equipmentType = equipmentType;
+    }
+
+    @Override
+    public String getDescribtion() {
+        return null;
     }
 }
