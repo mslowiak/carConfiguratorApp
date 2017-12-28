@@ -6,20 +6,31 @@ import java.util.stream.Collectors;
 
 public class CustomizedCar {
     static List<CarItems> carSpecification;
+    private int modelID;
+    private int equipmentLevelID;
+    private int engineID;
+
+    public int getModelID() {
+        return modelID;
+    }
+
+    public void setModelID(int modelID) {
+        this.modelID = modelID;
+    }
 
     public CustomizedCar(){
         carSpecification = new LinkedList<>();
     }
 
-    public static void addSpecification(CarItems carItem) {
+    public void addSpecification(CarItems carItem) {
         carSpecification.add(carItem);
     }
 
-    public static List<CarItems> getCarSpecification() {
+    public List<CarItems> getCarSpecification() {
         return carSpecification;
     }
 
-    public static String getCarSpecificationDescription() {
+    public String getCarSpecificationDescription() {
         return carSpecification.stream()
                 .map(item -> item.getItemDescription())
                 .reduce("",(a, b) -> a + "\n" + b);
