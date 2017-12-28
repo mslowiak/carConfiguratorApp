@@ -162,7 +162,7 @@ public class Model implements CarItems{
     }
 
     @Override
-    public String getDescribtion() {
-        return null;
+    public String getItemDescription() {
+        return getBrand() + getName();
     }
 }

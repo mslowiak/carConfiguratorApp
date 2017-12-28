@@ -136,7 +136,7 @@ public class EquipmentLevel implements CarItems {
     }
 
     @Override
-    public String getDescribtion() {
-        return null;
+    public String getItemDescription() {
+        return getName();
     }
 }

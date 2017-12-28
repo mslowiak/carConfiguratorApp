@@ -69,7 +69,7 @@ public class EquipmentElement implements CarItems {
     }
 
     @Override
-    public String getDescribtion() {
-        return null;
+    public String getItemDescription() {
+        return getDescription() + equipmentType.getDescription() + getPrice();
     }
 }

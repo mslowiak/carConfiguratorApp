@@ -152,7 +152,7 @@ public class Engine implements CarItems {
     }
 
     @Override
-    public String getDescribtion() {
-        return null;
+    public String getItemDescription() {
+        return getName() + getFuel() + getGearBox() + getCapacity() + getPowerKM() + getPowerKW() + getPrice();
     }
 }

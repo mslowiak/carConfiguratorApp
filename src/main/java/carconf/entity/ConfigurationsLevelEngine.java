@@ -49,7 +49,7 @@ public class ConfigurationsLevelEngine implements CarItems {
     }
 
     @Override
-    public String getDescribtion() {
-        return null;
+    public String getItemDescription() {
+        return getEquipmentLevel().getName() + getEngine().getItemDescription();
     }
 }
