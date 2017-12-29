@@ -2,6 +2,7 @@ package carconf.service.impl;
 
 import carconf.HibernateUtil;
 import carconf.entity.Color;
+import carconf.entity.EquipmentLevel;
 import carconf.entity.Model;
 import carconf.service.ColorService;
 import org.hibernate.Session;
@@ -28,5 +29,19 @@ public class ColorServiceImpl implements ColorService {
         List<Color> colorList = q.getResultList();
         session.getTransaction().commit();
         return colorList;
+    }
+
+    @Override
+    public List<Color> getColorsByModelId(int modelId) {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Color> criteria = builder.createQuery(Color.class);
+        Root<Color> root = criteria.from(Color.class);
+        criteria.select(root).where(builder.equal(root.get("model"), modelId));
+        Query<Color> q = session.createQuery(criteria);
+        List<Color> equipmentLevelList = q.getResultList();
+        session.getTransaction().commit();
+        return equipmentLevelList;
     }
 }
