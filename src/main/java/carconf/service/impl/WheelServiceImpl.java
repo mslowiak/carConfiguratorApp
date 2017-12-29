@@ -39,8 +39,8 @@ public class WheelServiceImpl implements WheelService {
         Root<Wheel> root = criteria.from(Wheel.class);
         criteria.select(root).where(builder.equal(root.get("equipmentLevel"), levelId));
         Query<Wheel> q = session.createQuery(criteria);
-        List<Wheel> colorList = q.getResultList();
+        List<Wheel> wheelList = q.getResultList();
         session.getTransaction().commit();
-        return colorList;
+        return wheelList;
     }
 }
