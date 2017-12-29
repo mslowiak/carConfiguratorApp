@@ -1,12 +1,14 @@
 package carconf.entity;
 
+import carconf.car_assembling.CarItems;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "configurations_level_engine",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"engine_ID", "level_ID"})}
 )
-public class ConfigurationsLevelEngine {
+public class ConfigurationsLevelEngine implements CarItems {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int config_ID;
@@ -44,5 +46,10 @@ public class ConfigurationsLevelEngine {
 
     public void setEquipmentLevel(EquipmentLevel equipmentLevel) {
         this.equipmentLevel = equipmentLevel;
+    }
+
+    @Override
+    public String getItemDescription() {
+        return getEquipmentLevel().getName() + getEngine().getItemDescription();
     }
 }

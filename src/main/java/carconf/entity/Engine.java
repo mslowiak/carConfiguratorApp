@@ -1,5 +1,7 @@
 package carconf.entity;
 
+import carconf.car_assembling.CarItems;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.logging.Level;
@@ -8,7 +10,7 @@ import java.util.logging.Level;
 @Table(name = "engines",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"name"})}
 )
-public class Engine {
+public class Engine implements CarItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "engine_ID", nullable = false)
@@ -147,5 +149,10 @@ public class Engine {
         configurationsLevelEngine.setEngine(null);
 
         return configurationsLevelEngine;
+    }
+
+    @Override
+    public String getItemDescription() {
+        return getName() + getFuel() + getGearBox() + getCapacity() + getPowerKM() + getPowerKW() + getPrice();
     }
 }

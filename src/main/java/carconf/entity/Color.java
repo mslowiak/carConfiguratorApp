@@ -1,5 +1,7 @@
 package carconf.entity;
 
+import carconf.car_assembling.CarItems;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,7 +9,7 @@ import javax.persistence.*;
         name = "colors",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"model_ID", "description"})}
 )
-public class Color {
+public class Color implements CarItems {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "color_ID", nullable = false)
@@ -94,5 +96,10 @@ public class Color {
 
     public void setModel(Model model) {
         this.model = model;
+    }
+
+    @Override
+    public String getItemDescription() {
+        return getDescription() + getColorType() + getPrice();
     }
 }
