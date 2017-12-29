@@ -1,5 +1,6 @@
 package carconf.controller;
 
+import carconf.App;
 import carconf.element.CarInfo;
 import carconf.entity.Model;
 import carconf.scene.ChooseEquipmentLevelScene;
@@ -32,8 +33,9 @@ public class ChooseCarSceneController {
     void initialize(){
         radiosGroup = new ToggleGroup();
         goNextButton.setOnAction(e ->{
+            App.modelId = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
             ChooseEquipmentLevelScene chooseEquipmentLevelScene = new ChooseEquipmentLevelScene(scene);
-            chooseEquipmentLevelScene.getEquipmentLevelSceneController().setChoseCarModel(Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString()));
+            chooseEquipmentLevelScene.getEquipmentLevelSceneController().setChoseCarModel(App.modelId);
         });
     }
 

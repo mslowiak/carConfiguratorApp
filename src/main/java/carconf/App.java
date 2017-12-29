@@ -19,6 +19,9 @@ public class App extends Application{
         window.show();
     }
 
+    public static int modelId;
+    public static int levelId;
+
     public static void main(String[] args) {
         launch(args);
     }
