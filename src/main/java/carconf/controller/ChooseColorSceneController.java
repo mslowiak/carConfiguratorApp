@@ -3,6 +3,7 @@ package carconf.controller;
 import carconf.App;
 import carconf.element.ColorInfo;
 import carconf.entity.Color;
+import carconf.scene.ChooseWheelScene;
 import carconf.service.impl.ColorServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -39,7 +40,8 @@ public class ChooseColorSceneController {
         });
 
         goNextButton.setOnAction(e ->{
-
+            ChooseWheelScene chooseWheelScene = new ChooseWheelScene(scene);
+            chooseWheelScene.getChooseWheelSceneController().displayWheels();
         });
     }
 
