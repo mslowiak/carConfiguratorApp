@@ -40,8 +40,8 @@ public class ColorServiceImpl implements ColorService {
         Root<Color> root = criteria.from(Color.class);
         criteria.select(root).where(builder.equal(root.get("model"), modelId));
         Query<Color> q = session.createQuery(criteria);
-        List<Color> equipmentLevelList = q.getResultList();
+        List<Color> colorList = q.getResultList();
         session.getTransaction().commit();
-        return equipmentLevelList;
+        return colorList;
     }
 }
