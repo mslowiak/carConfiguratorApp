@@ -35,7 +35,7 @@
             <Insets bottom="25.0" />
          </VBox.margin>
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <RadioButton fx:id="radioButton" mnemonicParsing="false">
