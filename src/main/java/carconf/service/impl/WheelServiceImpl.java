@@ -1,6 +1,7 @@
 package carconf.service.impl;
 
 import carconf.HibernateUtil;
+import carconf.entity.Color;
 import carconf.entity.Wheel;
 import carconf.service.WheelService;
 import org.hibernate.Session;
@@ -27,5 +28,19 @@ public class WheelServiceImpl implements WheelService {
         List<Wheel> wheelList = q.getResultList();
         session.getTransaction().commit();
         return wheelList;
+    }
+
+    @Override
+    public List<Wheel> getWheelsByLevelId(int levelId) {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Wheel> criteria = builder.createQuery(Wheel.class);
+        Root<Wheel> root = criteria.from(Wheel.class);
+        criteria.select(root).where(builder.equal(root.get("equipmentLevel"), levelId));
+        Query<Wheel> q = session.createQuery(criteria);
+        List<Wheel> colorList = q.getResultList();
+        session.getTransaction().commit();
+        return colorList;
     }
 }
