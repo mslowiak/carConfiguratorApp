@@ -1,8 +1,8 @@
 package carconf.controller;
 
 import carconf.element.EquipmentLevelInfo;
-import carconf.entity.ConfigurationsLevelEngine;
 import carconf.entity.EquipmentLevel;
+import carconf.scene.ChooseEngineScene;
 import carconf.service.impl.EquipmentLevelServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -39,7 +39,10 @@ public class ChooseEquipmentLevelSceneController {
 
         });
         goNextButton.setOnAction(e ->{
-
+            ChooseEngineScene chooseEngineScene = new ChooseEngineScene(scene);
+            chooseEngineScene
+                    .getEngineSceneController()
+                    .setChoseEquipmentLevel(Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString()));
         });
     }
     public void setScene(Scene scene) {
@@ -56,10 +59,6 @@ public class ChooseEquipmentLevelSceneController {
         List<EquipmentLevel> equipmentLevelsByModelId = equipmentLevelService.getEquipmentLevelsByModelId(choseModelId);
         for (int i=0; i<equipmentLevelsByModelId.size(); ++i){
             EquipmentLevel e = equipmentLevelsByModelId.get(i);
-            List<ConfigurationsLevelEngine> configurationsLevelEngines = e.getConfigurationsLevelEngines();
-            for (ConfigurationsLevelEngine ee : configurationsLevelEngines){
-                System.out.println(ee.getEngine());
-            }
             EquipmentLevelInfo equipmentLevelInfo = new EquipmentLevelInfo((i + 1) + ".", e.getName(), new DecimalFormat("#").format(e.getPrice()) + " PLN");
             equipmentLevelInfo.getRadioButton().setUserData(e.getLevelId());
             equipmentLevelInfo.getRadioButton().setToggleGroup(radiosGroup);
