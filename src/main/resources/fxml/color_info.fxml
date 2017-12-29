@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="colorNameLabel" text="colorName">
          <VBox.margin>
@@ -21,6 +21,9 @@
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
       </Label>
       <ImageView fx:id="colorImageView" fitHeight="247.0" fitWidth="354.0" pickOnBounds="true" preserveRatio="true">
          <VBox.margin>
@@ -41,4 +44,4 @@
          </font>
       </RadioButton>
    </children>
-</VBox>
+</fx:root>
