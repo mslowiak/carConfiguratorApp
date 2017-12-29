@@ -1,6 +1,5 @@
 package carconf;
 
-import carconf.car_assembling.CustomizedCar;
 import carconf.scene.StartScene;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -21,8 +20,6 @@ public class App extends Application{
     }
 
     public static void main(String[] args) {
-//        CustomizedCar customizedCar = new CustomizedCar();
         launch(args);
-
     }
 }
