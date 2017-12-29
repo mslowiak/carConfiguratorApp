@@ -9,7 +9,7 @@
 
 <fx:root alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="descriptionLabel" text="description">
+      <Label fx:id="descriptionLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="374.0" text="description" textAlignment="CENTER">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
