@@ -30,7 +30,7 @@ public class WheelInfo extends VBox {
 
     public WheelInfo(Wheel wheel) {
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/fxml/color_info.fxml")
+                getClass().getResource("/fxml/wheel_info.fxml")
         );
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
