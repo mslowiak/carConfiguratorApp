@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class ColorInfo extends VBox {
     @FXML
@@ -43,7 +44,7 @@ public class ColorInfo extends VBox {
         colorNameLabel.setText(color.getDescription());
         colorTypeLabel.setText(color.getColorType());
         colorImageView.setImage(new Image(color.getPhotoUrl()));
-        priceLabel.setText(color.getPrice() + " PLN");
+        priceLabel.setText(new DecimalFormat("#").format(color.getPrice()) + " PLN");
     }
 
     public RadioButton getRadioButton() {
