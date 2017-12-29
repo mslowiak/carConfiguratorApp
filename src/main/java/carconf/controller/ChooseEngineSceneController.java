@@ -3,6 +3,7 @@ package carconf.controller;
 import carconf.element.EngineInfo;
 import carconf.entity.ConfigurationsLevelEngine;
 import carconf.entity.Engine;
+import carconf.scene.ChooseColorScene;
 import carconf.service.impl.ConfigurationsLevelEngineServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -40,7 +41,8 @@ public class ChooseEngineSceneController {
         });
 
         goNextButton.setOnAction(e -> {
-
+            ChooseColorScene colorScene = new ChooseColorScene(scene);
+            colorScene.getChooseColorSceneController().displayColors();
         });
     }
 
@@ -49,7 +51,6 @@ public class ChooseEngineSceneController {
     }
 
     public void displayEngines(){
-        System.out.println("sialalalalal");
         ConfigurationsLevelEngineServiceImpl configurationsLevelEngineService =
                 new ConfigurationsLevelEngineServiceImpl();
         List<ConfigurationsLevelEngine> configurationsByLevelId =
