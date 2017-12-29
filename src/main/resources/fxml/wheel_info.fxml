@@ -14,7 +14,7 @@
             <Insets bottom="10.0" />
          </VBox.margin>
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Label fx:id="wheelSizeLabel" text="sizeOfWheel">
@@ -22,7 +22,7 @@
             <Insets bottom="10.0" />
          </VBox.margin>
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <ImageView fx:id="wheelImageView" fitHeight="247.0" fitWidth="354.0" pickOnBounds="true" preserveRatio="true">
