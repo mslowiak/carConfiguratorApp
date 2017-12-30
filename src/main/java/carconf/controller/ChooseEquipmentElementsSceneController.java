@@ -5,9 +5,12 @@ import carconf.element.ElementTypeInfo;
 import carconf.entity.EquipmentElement;
 import carconf.entity.EquipmentType;
 import carconf.service.impl.EquipmentElementServiceImpl;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -39,7 +42,22 @@ public class ChooseEquipmentElementsSceneController {
         });
 
         goNextButton.setOnAction(e -> {
-
+            List<Integer> listOfChecked = new ArrayList<>();
+            ObservableList<Node> children = equipmentElemsVBox.getChildren();
+            for (Node n : children){
+                ElementTypeInfo el = (ElementTypeInfo) n;
+                List<CheckBox> checkBoxList = el.getCheckBoxList();
+                for(CheckBox ch : checkBoxList){
+                    if(ch.isSelected()){
+                        listOfChecked.add((Integer) ch.getUserData());
+                    }
+                }
+            }
+            EquipmentElementServiceImpl equipmentElementService = new EquipmentElementServiceImpl();
+            List<EquipmentElement> choseElements = new ArrayList<>();
+            for (Integer i : listOfChecked){
+                choseElements.addAll(equipmentElementService.getEquipmentElementsByElemAndModelId(i, App.levelId));
+            }
         });
     }
 
