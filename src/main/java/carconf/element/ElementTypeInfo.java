@@ -45,6 +45,11 @@ public class ElementTypeInfo extends VBox{
             HBox hBox = new HBox();
             Label price = new Label(new DecimalFormat("#").format(elem.getPrice()) + " PLN");
             CheckBox ch = new CheckBox(elem.getDescription());
+            ch.setUserData(elem.getElemId());
+            if(elem.getPrice() == 0){
+                ch.setSelected(true);
+            }
+
             ch.setMinWidth(1000);
             ch.setMaxWidth(1000);
             ch.setPrefWidth(1000);
@@ -54,5 +59,9 @@ public class ElementTypeInfo extends VBox{
             hBox.getChildren().addAll(ch, price);
             elementsVBox.getChildren().add(hBox);
         }
+    }
+
+    public List<CheckBox> getCheckBoxList() {
+        return checkBoxList;
     }
 }
