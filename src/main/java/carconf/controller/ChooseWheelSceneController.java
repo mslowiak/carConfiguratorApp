@@ -3,6 +3,7 @@ package carconf.controller;
 import carconf.App;
 import carconf.element.WheelInfo;
 import carconf.entity.Wheel;
+import carconf.scene.ChooseEquipmentElementsScene;
 import carconf.service.impl.WheelServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -38,7 +39,8 @@ public class ChooseWheelSceneController {
         });
 
         goNextButton.setOnAction(e ->{
-
+            ChooseEquipmentElementsScene chooseEquipmentElementsScene = new ChooseEquipmentElementsScene(scene);
+            chooseEquipmentElementsScene.getChooseEquipmentElementsSceneController().displayElements();
         });
     }
 
