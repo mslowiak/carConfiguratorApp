@@ -2,6 +2,7 @@ package carconf.service.impl;
 
 import carconf.HibernateUtil;
 import carconf.entity.EquipmentElement;
+import carconf.entity.EquipmentType;
 import carconf.service.EquipmentElementService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,6 +24,20 @@ public class EquipmentElementServiceImpl implements EquipmentElementService {
         CriteriaQuery<EquipmentElement> criteria = builder.createQuery(EquipmentElement.class);
         Root<EquipmentElement> root = criteria.from(EquipmentElement.class);
         criteria.select(root);
+        Query<EquipmentElement> q = session.createQuery(criteria);
+        List<EquipmentElement> equipmentElementList = q.getResultList();
+        session.getTransaction().commit();
+        return equipmentElementList;
+    }
+
+    @Override
+    public List<EquipmentElement> getEquipmentElementsByLevelId(int levelId) {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<EquipmentElement> criteria = builder.createQuery(EquipmentElement.class);
+        Root<EquipmentElement> root = criteria.from(EquipmentElement.class);
+        criteria.select(root).where(builder.equal(root.get("equipmentLevel"), levelId));
         Query<EquipmentElement> q = session.createQuery(criteria);
         List<EquipmentElement> equipmentElementList = q.getResultList();
         session.getTransaction().commit();
