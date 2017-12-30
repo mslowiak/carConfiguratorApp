@@ -43,4 +43,18 @@ public class EquipmentElementServiceImpl implements EquipmentElementService {
         session.getTransaction().commit();
         return equipmentElementList;
     }
+
+    @Override
+    public List<EquipmentElement> getEquipmentElementsByElemAndModelId(int elemId, int levelId) {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<EquipmentElement> criteria = builder.createQuery(EquipmentElement.class);
+        Root<EquipmentElement> root = criteria.from(EquipmentElement.class);
+        criteria.select(root).where(builder.equal(root.get("elemId"), elemId), builder.equal(root.get("equipmentLevel"), levelId));
+        Query<EquipmentElement> q = session.createQuery(criteria);
+        List<EquipmentElement> equipmentElementList = q.getResultList();
+        session.getTransaction().commit();
+        return equipmentElementList;
+    }
 }
