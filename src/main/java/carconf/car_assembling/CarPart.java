@@ -1,5 +1,5 @@
 package carconf.car_assembling;
 
-public interface CarItems  {
+public interface CarPart {
     String getItemDescription();
 }

@@ -1,12 +1,12 @@
 package carconf.entity;
 
-import carconf.car_assembling.CarItems;
+import carconf.car_assembling.CarPart;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "equipment_elements")
-public class EquipmentElement implements CarItems {
+public class EquipmentElement implements CarPart {
     @Id
     @Column(name = "elem_ID", nullable = false)
     private int elemId;

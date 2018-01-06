@@ -1,6 +1,6 @@
 package carconf.entity;
 
-import carconf.car_assembling.CarItems;
+import carconf.car_assembling.CarPart;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 @Table(name = "models",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"name"})}
 )
-public class Model implements CarItems{
+public class Model implements CarPart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "model_ID", nullable = false)
