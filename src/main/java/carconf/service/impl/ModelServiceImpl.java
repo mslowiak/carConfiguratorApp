@@ -1,6 +1,7 @@
 package carconf.service.impl;
 
 import carconf.HibernateUtil;
+import carconf.entity.EquipmentElement;
 import carconf.entity.Model;
 import carconf.service.ModelService;
 import org.hibernate.Criteria;
@@ -26,6 +27,20 @@ public class ModelServiceImpl implements ModelService {
         CriteriaQuery<Model> criteria = builder.createQuery(Model.class);
         Root<Model> root = criteria.from(Model.class);
         criteria.select(root);
+        Query<Model> q = session.createQuery(criteria);
+        List<Model> modelList = q.getResultList();
+        session.getTransaction().commit();
+        return modelList;
+    }
+
+    @Override
+    public List<Model> getModelById(int ID) {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Model> criteria = builder.createQuery(Model.class);
+        Root<Model> root = criteria.from(Model.class);
+        criteria.select(root).where(builder.equal(root.get("modelId"), ID));
         Query<Model> q = session.createQuery(criteria);
         List<Model> modelList = q.getResultList();
         session.getTransaction().commit();
