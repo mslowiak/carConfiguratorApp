@@ -1,18 +1,18 @@
 package carconf.scene;
 
-import carconf.controller.ChooseCarSceneController;
+import carconf.controller.ChooseModelSceneController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class ChooseCarScene {
+public class ChooseModelScene {
     private Scene scene;
     private FXMLLoader loader;
-    private ChooseCarSceneController carSceneController;
+    private ChooseModelSceneController carSceneController;
 
-    public ChooseCarScene(Scene scene) {
+    public ChooseModelScene(Scene scene) {
         this.scene = scene;
         setScene();
         setController();
@@ -21,7 +21,7 @@ public class ChooseCarScene {
 
     private void setScene() {
         loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/choose_car_scene.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/choose_model_scene.fxml"));
 
         try {
             VBox vBox = loader.load();

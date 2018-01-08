@@ -14,7 +14,7 @@ import javafx.scene.layout.GridPane;
 
 import java.util.List;
 
-public class ChooseCarSceneController {
+public class ChooseModelSceneController {
 
     private Scene scene;
     private ToggleGroup radiosGroup;
