@@ -83,4 +83,8 @@ public class CarContent {
     public void setWheel(Wheel wheel) {
         this.wheel = wheel;
     }
+
+    public void addEquipmentElement(EquipmentElement elem) {
+        this.equipmentElements.add(elem);
+    }
 }
