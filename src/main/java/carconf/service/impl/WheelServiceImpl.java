@@ -43,4 +43,18 @@ public class WheelServiceImpl implements WheelService {
         session.getTransaction().commit();
         return wheelList;
     }
+
+    @Override
+    public List<Wheel> getWheelByWheelId(int wheelId) {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Wheel> criteria = builder.createQuery(Wheel.class);
+        Root<Wheel> root = criteria.from(Wheel.class);
+        criteria.select(root).where(builder.equal(root.get("wheelId"), wheelId));
+        Query<Wheel> q = session.createQuery(criteria);
+        List<Wheel> wheelList = q.getResultList();
+        session.getTransaction().commit();
+        return wheelList;
+    }
 }

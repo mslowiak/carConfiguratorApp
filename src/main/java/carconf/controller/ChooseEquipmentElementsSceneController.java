@@ -1,6 +1,7 @@
 package carconf.controller;
 
 import carconf.App;
+import carconf.car_assembling.car_decorators.EquipmentElementCarDecorator;
 import carconf.element.ElementTypeInfo;
 import carconf.entity.EquipmentElement;
 import carconf.entity.EquipmentType;
@@ -56,8 +57,12 @@ public class ChooseEquipmentElementsSceneController {
             EquipmentElementServiceImpl equipmentElementService = new EquipmentElementServiceImpl();
             List<EquipmentElement> choseElements = new ArrayList<>();
             for (Integer i : listOfChecked){
-                choseElements.addAll(equipmentElementService.getEquipmentElementsByElemAndModelId(i, App.levelId));
+                choseElements.addAll(equipmentElementService.getEquipmentElementsByElemAndModelId(i,
+                        App.car.getCarContent().getEquipmentLevel().getLevelId()));
             }
+
+            choseElements.stream()
+                    .forEach(elem -> App.car = new EquipmentElementCarDecorator(App.car, elem));
         });
     }
 
@@ -67,7 +72,8 @@ public class ChooseEquipmentElementsSceneController {
 
     public void displayElements() {
         EquipmentElementServiceImpl equipmentElementService = new EquipmentElementServiceImpl();
-        List<EquipmentElement> equipmentElements = equipmentElementService.getEquipmentElementsByLevelId(App.levelId);
+        List<EquipmentElement> equipmentElements =
+                equipmentElementService.getEquipmentElementsByLevelId(App.car.getCarContent().getEquipmentLevel().getLevelId());
         Set<Integer> set = new HashSet<>();
         for (EquipmentElement e : equipmentElements){
             set.add(e.getEquipmentType().getType_ID());

@@ -28,4 +28,19 @@ public class EngineServiceImpl implements EngineService {
         session.getTransaction().commit();
         return engineList;
     }
+
+    public List<Engine> getEngineByEngineId(int engineId) {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Engine> criteria = builder.createQuery(Engine.class);
+        Root<Engine> root = criteria.from(Engine.class);
+        criteria.select(root).where(builder.equal(root.get("engineId"), engineId));;
+        Query<Engine> q = session.createQuery(criteria);
+        List<Engine> engineList = q.getResultList();
+        session.getTransaction().commit();
+        return engineList;
+    }
+
+
 }

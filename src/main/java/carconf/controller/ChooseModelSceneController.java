@@ -1,9 +1,11 @@
 package carconf.controller;
 
 import carconf.App;
+import carconf.car_assembling.car_decorators.ModelCarDecorator;
 import carconf.element.CarInfo;
 import carconf.entity.Model;
 import carconf.scene.ChooseEquipmentLevelScene;
+import carconf.service.ModelService;
 import carconf.service.impl.ModelServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -33,9 +35,11 @@ public class ChooseModelSceneController {
     void initialize(){
         radiosGroup = new ToggleGroup();
         goNextButton.setOnAction(e ->{
-            App.modelId = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
+            int modelID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
             ChooseEquipmentLevelScene chooseEquipmentLevelScene = new ChooseEquipmentLevelScene(scene);
-            chooseEquipmentLevelScene.getEquipmentLevelSceneController().setChoseCarModel(App.modelId);
+            chooseEquipmentLevelScene.getEquipmentLevelSceneController().setChoseCarModel(modelID);
+            ModelServiceImpl modelService = new ModelServiceImpl();
+            App.car = new ModelCarDecorator(App.car, modelService.getModelById(modelID).get(0));
         });
     }
 

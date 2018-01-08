@@ -44,4 +44,18 @@ public class ColorServiceImpl implements ColorService {
         session.getTransaction().commit();
         return colorList;
     }
+
+    @Override
+    public List<Color> getColorByColorId(int colorId) {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Color> criteria = builder.createQuery(Color.class);
+        Root<Color> root = criteria.from(Color.class);
+        criteria.select(root).where(builder.equal(root.get("colorId"), colorId));
+        Query<Color> q = session.createQuery(criteria);
+        List<Color> colorList = q.getResultList();
+        session.getTransaction().commit();
+        return colorList;
+    }
 }

@@ -1,6 +1,7 @@
 package carconf.controller;
 
 import carconf.App;
+import carconf.car_assembling.car_decorators.EquipmentLevelCarDecorator;
 import carconf.element.EquipmentLevelInfo;
 import carconf.entity.EquipmentLevel;
 import carconf.scene.ChooseEngineScene;
@@ -40,11 +41,15 @@ public class ChooseEquipmentLevelSceneController {
 
         });
         goNextButton.setOnAction(e ->{
-            App.levelId = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
+            int equipmentLevelID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
             ChooseEngineScene chooseEngineScene = new ChooseEngineScene(scene);
             chooseEngineScene
                     .getEngineSceneController()
-                    .setChoseEquipmentLevel(App.levelId);
+                    .setChoseEquipmentLevel(equipmentLevelID);
+            EquipmentLevelServiceImpl levelService = new EquipmentLevelServiceImpl();
+            int modelID = App.car.getCarContent().getModel().getModelId();
+            App.car = new EquipmentLevelCarDecorator(App.car,
+                    levelService.getEquipmentLevelByEquipmentLevelIdAndModelId(equipmentLevelID, modelID).get(0));
         });
     }
     public void setScene(Scene scene) {

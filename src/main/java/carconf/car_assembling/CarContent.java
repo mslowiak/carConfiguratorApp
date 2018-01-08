@@ -16,6 +16,7 @@ public class CarContent {
     private Model model;
     private Wheel wheel;
 
+
     public CarContent() {
         equipmentElements = new ArrayList<>();
     }

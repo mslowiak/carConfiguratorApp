@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface EngineService {
     List<Engine> getEngines();
+    List<Engine> getEngineByEngineId(int engineId);
 }

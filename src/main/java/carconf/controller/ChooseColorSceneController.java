@@ -1,6 +1,7 @@
 package carconf.controller;
 
 import carconf.App;
+import carconf.car_assembling.car_decorators.ColorCarDecorator;
 import carconf.element.ColorInfo;
 import carconf.entity.Color;
 import carconf.scene.ChooseWheelScene;
@@ -40,8 +41,11 @@ public class ChooseColorSceneController {
         });
 
         goNextButton.setOnAction(e ->{
+            int colorId = Integer.parseInt(toggleGroup.getSelectedToggle().getUserData().toString());
             ChooseWheelScene chooseWheelScene = new ChooseWheelScene(scene);
             chooseWheelScene.getChooseWheelSceneController().displayWheels();
+            ColorServiceImpl colorService = new ColorServiceImpl();
+            App.car = new ColorCarDecorator(App.car, colorService.getColorByColorId(colorId).get(0));
         });
     }
 
@@ -50,8 +54,9 @@ public class ChooseColorSceneController {
     }
 
     public void displayColors(){
+        System.out.println(App.car.getCarContent().getModel().getModelId());
         ColorServiceImpl colorService = new ColorServiceImpl();
-        List<Color> colorsByModelId = colorService.getColorsByModelId(App.modelId);
+        List<Color> colorsByModelId = colorService.getColorsByModelId(App.car.getCarContent().getModel().getModelId());
         for(int i = 0; i < colorsByModelId.size(); ++i){
             Color color = colorsByModelId.get(i);
             ColorInfo colorInfo = new ColorInfo(color);

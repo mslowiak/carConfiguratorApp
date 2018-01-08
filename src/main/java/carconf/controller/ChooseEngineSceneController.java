@@ -1,10 +1,13 @@
 package carconf.controller;
 
+import carconf.App;
+import carconf.car_assembling.car_decorators.EngineCarDecorator;
 import carconf.element.EngineInfo;
 import carconf.entity.ConfigurationsLevelEngine;
 import carconf.entity.Engine;
 import carconf.scene.ChooseColorScene;
 import carconf.service.impl.ConfigurationsLevelEngineServiceImpl;
+import carconf.service.impl.EngineServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -41,8 +44,11 @@ public class ChooseEngineSceneController {
         });
 
         goNextButton.setOnAction(e -> {
+            int engineID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
             ChooseColorScene colorScene = new ChooseColorScene(scene);
             colorScene.getChooseColorSceneController().displayColors();
+            EngineServiceImpl engineService = new EngineServiceImpl();
+            App.car = new EngineCarDecorator(App.car, engineService.getEngineByEngineId(engineID).get(0));
         });
     }
 
