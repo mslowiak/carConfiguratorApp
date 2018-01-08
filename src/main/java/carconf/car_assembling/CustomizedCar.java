@@ -1,38 +1,29 @@
 package carconf.car_assembling;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
+public class CustomizedCar{
 
-public class CustomizedCar {
-    static List<CarItems> carSpecification;
-    private int modelID;
-    private int equipmentLevelID;
-    private int engineID;
+    private CarContent carContent;
+    private double totalPrice;
 
-    public int getModelID() {
-        return modelID;
-    }
-
-    public void setModelID(int modelID) {
-        this.modelID = modelID;
-    }
 
     public CustomizedCar(){
-        carSpecification = new LinkedList<>();
+        carContent = new CarContent();
+        totalPrice = 0;
     }
 
-    public void addSpecification(CarItems carItem) {
-        carSpecification.add(carItem);
+    public CarContent getCarContent() {
+        return carContent;
     }
 
-    public List<CarItems> getCarSpecification() {
-        return carSpecification;
+    public void setCarContent(CarContent carContent) {
+        this.carContent = carContent;
     }
 
-    public String getCarSpecificationDescription() {
-        return carSpecification.stream()
-                .map(item -> item.getItemDescription())
-                .reduce("",(a, b) -> a + "\n" + b);
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }
