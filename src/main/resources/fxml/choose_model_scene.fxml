@@ -43,6 +43,11 @@
             <Insets />
          </VBox.margin>
          <children>
+            <Label fx:id="errorLabel" prefHeight="35.0" prefWidth="792.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
             <Button fx:id="goNextButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="169.0" text="Dalej">
                <font>
                   <Font size="24.0" />

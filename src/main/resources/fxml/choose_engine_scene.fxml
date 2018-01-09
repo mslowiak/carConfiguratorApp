@@ -27,27 +27,36 @@
             <VBox fx:id="equipmentLevelsVBox" alignment="CENTER" prefHeight="742.0" prefWidth="1487.0" />
          </content>
       </ScrollPane>
-      <GridPane minHeight="-Infinity" prefHeight="70.0" prefWidth="924.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button fx:id="goBackButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="164.0" text="Cofnij">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-            <Button fx:id="goNextButton" mnemonicParsing="false" prefHeight="51.0" prefWidth="160.0" text="Dalej" GridPane.columnIndex="1">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-         </children>
-      </GridPane>
+       <GridPane minHeight="-Infinity" prefHeight="70.0" prefWidth="924.0">
+           <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+           <children>
+               <Button fx:id="goBackButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="164.0" text="Cofnij">
+                   <font>
+                       <Font size="24.0" />
+                   </font>
+               </Button>
+               <Button fx:id="goNextButton" mnemonicParsing="false" prefHeight="51.0" prefWidth="160.0" text="Dalej" GridPane.columnIndex="2">
+                   <font>
+                       <Font size="24.0" />
+                   </font>
+               </Button>
+               <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="498.0" textAlignment="CENTER" textFill="RED" GridPane.columnIndex="1">
+                   <GridPane.margin>
+                       <Insets />
+                   </GridPane.margin>
+                   <font>
+                       <Font name="System Bold" size="20.0" />
+                   </font>
+               </Label>
+           </children>
+       </GridPane>
    </children>
    <opaqueInsets>
       <Insets />
