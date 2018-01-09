@@ -35,21 +35,28 @@ public class ChooseEquipmentLevelSceneController {
     private Button goNextButton;
 
     @FXML
+    private Label errorLabel;
+
+    @FXML
     void initialize(){
         radiosGroup = new ToggleGroup();
         goBackButton.setOnAction(e ->{
 
         });
         goNextButton.setOnAction(e ->{
-            int equipmentLevelID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
-            ChooseEngineScene chooseEngineScene = new ChooseEngineScene(scene);
-            chooseEngineScene
-                    .getEngineSceneController()
-                    .setChoseEquipmentLevel(equipmentLevelID);
-            EquipmentLevelServiceImpl levelService = new EquipmentLevelServiceImpl();
-            int modelID = App.car.getCarContent().getModel().getModelId();
-            App.car = new EquipmentLevelCarDecorator(App.car,
-                    levelService.getEquipmentLevelByEquipmentLevelIdAndModelId(equipmentLevelID, modelID).get(0));
+            if(radiosGroup.getSelectedToggle() != null) {
+                int equipmentLevelID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
+                ChooseEngineScene chooseEngineScene = new ChooseEngineScene(scene);
+                chooseEngineScene
+                        .getEngineSceneController()
+                        .setChoseEquipmentLevel(equipmentLevelID);
+                EquipmentLevelServiceImpl levelService = new EquipmentLevelServiceImpl();
+                int modelID = App.car.getCarContent().getModel().getModelId();
+                App.car = new EquipmentLevelCarDecorator(App.car,
+                        levelService.getEquipmentLevelByEquipmentLevelIdAndModelId(equipmentLevelID, modelID).get(0));
+            }else{
+                errorLabel.setText("Rodzaj wyposażenia nie został wybrany");
+            }
         });
     }
     public void setScene(Scene scene) {

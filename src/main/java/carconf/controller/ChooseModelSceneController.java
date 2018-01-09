@@ -30,16 +30,23 @@ public class ChooseModelSceneController {
     @FXML
     private Button goNextButton;
 
+    @FXML
+    private Label errorLabel;
+
 
     @FXML
     void initialize(){
         radiosGroup = new ToggleGroup();
         goNextButton.setOnAction(e ->{
-            int modelID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
-            ChooseEquipmentLevelScene chooseEquipmentLevelScene = new ChooseEquipmentLevelScene(scene);
-            chooseEquipmentLevelScene.getEquipmentLevelSceneController().setChoseCarModel(modelID);
-            ModelServiceImpl modelService = new ModelServiceImpl();
-            App.car = new ModelCarDecorator(App.car, modelService.getModelById(modelID).get(0));
+            if(radiosGroup.getSelectedToggle() != null){
+                int modelID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
+                ChooseEquipmentLevelScene chooseEquipmentLevelScene = new ChooseEquipmentLevelScene(scene);
+                chooseEquipmentLevelScene.getEquipmentLevelSceneController().setChoseCarModel(modelID);
+                ModelServiceImpl modelService = new ModelServiceImpl();
+                App.car = new ModelCarDecorator(App.car, modelService.getModelById(modelID).get(0));
+            }else{
+                errorLabel.setText("Model nie został wybrany");
+            }
         });
     }
 

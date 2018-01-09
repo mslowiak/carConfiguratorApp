@@ -36,6 +36,9 @@ public class ChooseEngineSceneController {
     private Button goNextButton;
 
     @FXML
+    private Label errorLabel;
+
+    @FXML
     void initialize(){
         radiosGroup = new ToggleGroup();
 
@@ -44,11 +47,15 @@ public class ChooseEngineSceneController {
         });
 
         goNextButton.setOnAction(e -> {
-            int engineID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
-            ChooseColorScene colorScene = new ChooseColorScene(scene);
-            colorScene.getChooseColorSceneController().displayColors();
-            EngineServiceImpl engineService = new EngineServiceImpl();
-            App.car = new EngineCarDecorator(App.car, engineService.getEngineByEngineId(engineID).get(0));
+            if(radiosGroup.getSelectedToggle() != null) {
+                int engineID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
+                ChooseColorScene colorScene = new ChooseColorScene(scene);
+                colorScene.getChooseColorSceneController().displayColors();
+                EngineServiceImpl engineService = new EngineServiceImpl();
+                App.car = new EngineCarDecorator(App.car, engineService.getEngineByEngineId(engineID).get(0));
+            }else{
+                errorLabel.setText("Silnik nie został wybrany");
+            }
         });
     }
 

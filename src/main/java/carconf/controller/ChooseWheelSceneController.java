@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ChooseWheelSceneController {
     private Scene scene;
-    private ToggleGroup toggleGroup;
+    private ToggleGroup radiosGroup;
 
     @FXML
     private Label topLabel;
@@ -32,19 +32,26 @@ public class ChooseWheelSceneController {
     private Button goNextButton;
 
     @FXML
+    private Label errorLabel;
+
+    @FXML
     void initialize(){
-        toggleGroup = new ToggleGroup();
+        radiosGroup = new ToggleGroup();
 
         goBackButton.setOnAction(e -> {
 
         });
 
         goNextButton.setOnAction(e ->{
-            int wheelId = Integer.parseInt(toggleGroup.getSelectedToggle().getUserData().toString());
-            ChooseEquipmentElementsScene chooseEquipmentElementsScene = new ChooseEquipmentElementsScene(scene);
-            chooseEquipmentElementsScene.getChooseEquipmentElementsSceneController().displayElements();
-            WheelServiceImpl wheelService = new WheelServiceImpl();
-            App.car = new WheelCarDecorator(App.car, wheelService.getWheelByWheelId(wheelId).get(0));
+            if(radiosGroup.getSelectedToggle() != null) {
+                int wheelId = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
+                ChooseEquipmentElementsScene chooseEquipmentElementsScene = new ChooseEquipmentElementsScene(scene);
+                chooseEquipmentElementsScene.getChooseEquipmentElementsSceneController().displayElements();
+                WheelServiceImpl wheelService = new WheelServiceImpl();
+                App.car = new WheelCarDecorator(App.car, wheelService.getWheelByWheelId(wheelId).get(0));
+            }else{
+                errorLabel.setText("Felgi nie zostały wybrane");
+            }
         });
     }
 
@@ -59,7 +66,7 @@ public class ChooseWheelSceneController {
             Wheel wheel = wheelsByLevelId.get(i);
             WheelInfo wheelInfo = new WheelInfo(wheel);
             wheelInfo.getRadioButton().setUserData(i);
-            wheelInfo.getRadioButton().setToggleGroup(toggleGroup);
+            wheelInfo.getRadioButton().setToggleGroup(radiosGroup);
             colorsHBox.getChildren().add(wheelInfo);
         }
     }
