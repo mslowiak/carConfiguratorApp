@@ -26,5 +26,6 @@ hs_err_pid*
 
 
 /src/main/resources/hibernate.cfg.xml
+/src/main/resources/images/*
 carConfiguratorApp.iml
 /target/*
