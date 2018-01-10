@@ -12,7 +12,7 @@ public class CustomizedCar{
     }
 
     public CustomizedCar(CarContent carContent, double totalPrice) {
-        this.carContent = carContent;
+        this.carContent = new CarContent(carContent);
         this.totalPrice = totalPrice;
     }
 
@@ -45,7 +45,7 @@ public class CustomizedCar{
         private final double totalPrice;
 
         public CustomizedCarMemento(CarContent carContent, double totalPrice) {
-            this.carContent = carContent;
+            this.carContent = new CarContent(carContent);
             this.totalPrice = totalPrice;
         }
     }

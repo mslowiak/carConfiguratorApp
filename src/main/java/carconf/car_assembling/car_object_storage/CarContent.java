@@ -21,6 +21,21 @@ public class CarContent {
         equipmentElements = new ArrayList<>();
     }
 
+    public CarContent(CarContent carContent) {
+        this.color = new Color(carContent.color);
+        this.configurationsLevelEngine = new ConfigurationsLevelEngine(carContent.configurationsLevelEngine);
+        this.engine = new Engine(carContent.engine);
+        List<EquipmentElement> tmp = new ArrayList<>();
+        for (EquipmentElement e : carContent.equipmentElements){
+            tmp.add(new EquipmentElement(e));
+        }
+        this.equipmentElements = tmp;
+        this.equipmentLevel = new EquipmentLevel(carContent.equipmentLevel);
+        this.equipmentType = new EquipmentType(carContent.equipmentType);
+        this.model = new Model(carContent.model);
+        this.wheel = new Wheel(carContent.wheel);
+    }
+
     public Color getColor() {
         return color;
     }
