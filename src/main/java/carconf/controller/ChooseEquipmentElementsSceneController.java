@@ -5,6 +5,7 @@ import carconf.car_assembling.car_decorators.EquipmentElementCarDecorator;
 import carconf.element.ElementTypeInfo;
 import carconf.entity.EquipmentElement;
 import carconf.entity.EquipmentType;
+import carconf.scene.ChooseDataSaverScene;
 import carconf.service.impl.EquipmentElementServiceImpl;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -63,6 +64,9 @@ public class ChooseEquipmentElementsSceneController {
 
             choseElements.stream()
                     .forEach(elem -> App.car = new EquipmentElementCarDecorator(App.car, elem));
+
+            ChooseDataSaverScene choosedataSaverScene = new ChooseDataSaverScene(scene);
+            choosedataSaverScene.getDataSaverSceneController().displayOptionForSavingConfiguration();
         });
     }
 

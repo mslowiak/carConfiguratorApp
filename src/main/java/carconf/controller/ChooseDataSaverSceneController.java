@@ -34,23 +34,23 @@ public class ChooseDataSaverSceneController {
 
     @FXML
     void initialize(){
-        radiosGroup = new ToggleGroup();
-
-        goBackButton.setOnAction(e -> {
-
-        });
-
-        endConfigButton.setOnAction(e ->{
-            if(radiosGroup.getSelectedToggle() != null) {
+//        radiosGroup = new ToggleGroup();
+//
+//        goBackButton.setOnAction(e -> {
+//
+//        });
+//
+//        endConfigButton.setOnAction(e ->{
+//            if(radiosGroup.getSelectedToggle() != null) {
 //                int wheelId = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
 //                ChooseEquipmentElementsScene chooseEquipmentElementsScene = new ChooseEquipmentElementsScene(scene);
 //                chooseEquipmentElementsScene.getChooseEquipmentElementsSceneController().displayElements();
 //                WheelServiceImpl wheelService = new WheelServiceImpl();
 //                App.car = new WheelCarDecorator(App.car, wheelService.getWheelByWheelId(wheelId).get(0));
-            }else{
-                errorLabel.setText("Musisz wybrać sposób zapisu danych o Twojej konfiguracji");
-            }
-        });
+//            }else{
+//                errorLabel.setText("Musisz wybrać sposób zapisu danych o Twojej konfiguracji");
+//            }
+//        });
     }
 
     public void setScene(Scene scene) {
