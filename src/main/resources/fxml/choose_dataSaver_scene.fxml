@@ -18,7 +18,7 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="topLabel" prefHeight="35.0" prefWidth="1021.0" text="Wybierz co zrobic z konfiguracja">
+            <Label fx:id="topLabel" prefHeight="35.0" prefWidth="1021.0" text="Wybierz co zrobić z konfiguracją">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font></Label>
@@ -42,7 +42,7 @@
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="164.0" text="Zakoncz" GridPane.columnIndex="2">
+            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="164.0" text="Zakończ" GridPane.columnIndex="2">
                <font>
                   <Font size="24.0" />
                </font></Button>
