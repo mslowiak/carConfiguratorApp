@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 
@@ -34,8 +35,8 @@ public class ChooseDataSaverSceneController {
 
     @FXML
     void initialize(){
-//        radiosGroup = new ToggleGroup();
-//
+        radiosGroup = new ToggleGroup();
+
 //        goBackButton.setOnAction(e -> {
 //
 //        });
