@@ -7,15 +7,15 @@ import java.util.List;
 
 public class CustomizedCarCaretaker {
 
-    private List<CustomizedCarMemento> customizedCarMementos = new ArrayList<>();
+    private List<CustomizedCar.CustomizedCarMemento> customizedCarMementos = new ArrayList<>();
 
     public void saveCustomizedCar(CustomizedCar customizedCar){
-        CustomizedCarMemento memento = customizedCar.createMemento();
+        CustomizedCar.CustomizedCarMemento memento = customizedCar.createMemento();
         customizedCarMementos.add(memento);
     }
 
     public CustomizedCar loadCustomizedCar(){
-        CustomizedCarMemento memento = customizedCarMementos.get(customizedCarMementos.size() - 1);
+        CustomizedCar.CustomizedCarMemento memento = customizedCarMementos.get(customizedCarMementos.size() - 1);
         return CustomizedCar.createCustomizedCar(memento);
     }
 }
