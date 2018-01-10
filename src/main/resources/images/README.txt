@@ -1,0 +1,1 @@
+W tym folderze powinny zawierać się zdjęcia
