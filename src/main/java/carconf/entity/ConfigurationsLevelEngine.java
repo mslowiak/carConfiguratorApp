@@ -1,6 +1,6 @@
 package carconf.entity;
 
-import carconf.car_assembling.CarPart;
+import carconf.car_assembling.car_object_storage.CarPart;
 
 import javax.persistence.*;
 

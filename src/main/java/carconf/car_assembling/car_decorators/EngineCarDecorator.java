@@ -1,7 +1,7 @@
 package carconf.car_assembling.car_decorators;
 
-import carconf.car_assembling.CarPart;
-import carconf.car_assembling.CustomizedCar;
+import carconf.car_assembling.car_object_storage.CarPart;
+import carconf.car_assembling.car_object_storage.CustomizedCar;
 import carconf.entity.Engine;
 
 public class EngineCarDecorator extends CustomizedCar {
