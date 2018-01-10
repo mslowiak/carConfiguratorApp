@@ -28,6 +28,16 @@ public class EquipmentElement implements CarPart {
     public EquipmentElement() {
     }
 
+    public EquipmentElement(EquipmentElement e) {
+        if (e != null){
+            this.elemId = e.getElemId();
+            this.description = e.getDescription();
+            this.price = e.getPrice();
+            this.equipmentLevel = e.getEquipmentLevel();
+            this.equipmentType = e.getEquipmentType();
+        }
+    }
+
     public int getElemId() {
         return elemId;
     }

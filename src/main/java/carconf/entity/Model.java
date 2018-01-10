@@ -42,15 +42,22 @@ public class Model implements CarPart {
     @OneToMany(mappedBy="model")
     private List<EquipmentLevel> equipmentLevels;
 
-    public Model(String name, String brand, int width, int height, int length) {
-        this.name = name;
-        this.brand = brand;
-        this.width = width;
-        this.height = height;
-        this.length = length;
+    public Model() {
     }
 
-    public Model() {
+    public Model(Model model) {
+        if (model != null){
+            this.modelId = model.getModelId();
+            this.name = model.getName();
+            this.brand = model.getBrand();
+            this.width = model.getWidth();
+            this.height = model.getHeight();
+            this.length = model.getLength();
+            this.basicPrice = model.getBasicPrice();
+            this.photoUrl = model.getPhotoUrl();
+            this.colors = model.getColors();
+            this.equipmentLevels = model.getEquipmentLevels();
+        }
     }
 
     public int getModelId() {

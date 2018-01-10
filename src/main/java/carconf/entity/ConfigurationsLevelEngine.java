@@ -24,6 +24,14 @@ public class ConfigurationsLevelEngine implements CarPart {
     public ConfigurationsLevelEngine() {
     }
 
+    public ConfigurationsLevelEngine(ConfigurationsLevelEngine configurationsLevelEngine) {
+        if(configurationsLevelEngine != null){
+            this.config_ID = configurationsLevelEngine.getConfig_ID();
+            this.engine = configurationsLevelEngine.getEngine();
+            this.equipmentLevel = configurationsLevelEngine.getEquipmentLevel();
+        }
+    }
+
     public int getConfig_ID() {
         return this.config_ID;
     }

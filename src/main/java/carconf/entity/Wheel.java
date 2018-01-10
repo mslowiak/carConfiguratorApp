@@ -31,15 +31,18 @@ public class Wheel implements CarPart {
     @Column(name = "photo", nullable = false)
     private String photoUrl;
 
-    public Wheel(EquipmentLevel equipmentLevel, int size, String description, float price, String photoUrl) {
-        this.equipmentLevel = equipmentLevel;
-        this.size = size;
-        this.description = description;
-        this.price = price;
-        this.photoUrl = photoUrl;
+    public Wheel() {
     }
 
-    public Wheel() {
+    public Wheel(Wheel wheel) {
+        if (wheel != null) {
+            this.wheelId = wheel.getWheelId();
+            this.equipmentLevel = wheel.getEquipmentLevel();
+            this.size = wheel.getSize();
+            this.description = wheel.getDescription();
+            this.price = wheel.getPrice();
+            this.photoUrl = wheel.getPhotoUrl();
+        }
     }
 
     public int getWheelId() {

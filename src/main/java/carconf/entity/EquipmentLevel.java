@@ -37,6 +37,18 @@ public class EquipmentLevel implements CarPart {
     public EquipmentLevel() {
     }
 
+    public EquipmentLevel(EquipmentLevel equipmentLevel) {
+        if(equipmentLevel != null){
+            this.levelId = equipmentLevel.getLevelId();
+            this.name = equipmentLevel.getName();
+            this.price = equipmentLevel.getPrice();
+            this.configurationsLevelEngines = equipmentLevel.getConfigurationsLevelEngines();
+            this.equipmentElements = equipmentLevel.getEquipmentElements();
+            this.model = equipmentLevel.getModel();
+            this.wheels = equipmentLevel.getWheels();
+        }
+    }
+
     public int getLevelId() {
         return levelId;
     }

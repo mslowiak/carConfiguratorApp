@@ -23,6 +23,14 @@ public class EquipmentType implements CarPart {
     public EquipmentType() {
     }
 
+    public EquipmentType(EquipmentType equipmentType) {
+        if (equipmentType != null) {
+            this.type_ID = equipmentType.getType_ID();
+            this.description = equipmentType.getDescription();
+            this.equipmentElements = equipmentType.getEquipmentElements();
+        }
+    }
+
     public int getType_ID() {
         return type_ID;
     }

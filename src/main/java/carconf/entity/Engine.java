@@ -42,18 +42,22 @@ public class Engine implements CarPart {
     @OneToMany(mappedBy="engine")
     private List<ConfigurationsLevelEngine> configurationsLevelEngines;
 
-    public Engine(String name, String fuel, int powerKM, int powerKW, float capacity, String gearBox, int amountOfCylinders, int price) {
-        this.name = name;
-        this.fuel = fuel;
-        this.powerKM = powerKM;
-        this.powerKW = powerKW;
-        this.capacity = capacity;
-        this.gearBox = gearBox;
-        this.amountOfCylinders = amountOfCylinders;
-        this.price = price;
+    public Engine() {
     }
 
-    public Engine() {
+    public Engine(Engine engine) {
+        if(engine != null){
+            this.engineId = engine.getEngineId();
+            this.name = engine.getName();
+            this.fuel = engine.getFuel();
+            this.powerKM = engine.getPowerKM();
+            this.powerKW = engine.getPowerKW();
+            this.capacity = engine.getCapacity();
+            this.gearBox = engine.getGearBox();
+            this.amountOfCylinders = engine.getAmountOfCylinders();
+            this.price = engine.getPrice();
+            this.configurationsLevelEngines = engine.getConfigurationsLevelEngines();
+        }
     }
 
     public int getEngineId() {

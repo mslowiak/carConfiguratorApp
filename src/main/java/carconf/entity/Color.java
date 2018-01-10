@@ -34,12 +34,15 @@ public class Color implements CarPart {
     public Color() {
     }
 
-    public Color(Model model, String description, String colorType, float price, String photoUrl) {
-        this.model = model;
-        this.description = description;
-        this.colorType = colorType;
-        this.price = price;
-        this.photoUrl = photoUrl;
+    public Color(Color color) {
+        if (color != null){
+            this.colorId = color.colorId;
+            this.model = color.model;
+            this.description = color.description;
+            this.colorType = color.colorType;
+            this.price = color.price;
+            this.photoUrl = color.photoUrl;
+        }
     }
 
     public int getColorId() {
