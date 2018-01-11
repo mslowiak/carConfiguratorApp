@@ -1,12 +1,12 @@
 package carconf.car_assembling.car_object_storage;
 
-public class CustomizedCar{
+public class CustomizedCar {
 
     private CarContent carContent;
     private double totalPrice;
 
 
-    public CustomizedCar(){
+    public CustomizedCar() {
         carContent = new CarContent();
         totalPrice = 0;
     }
@@ -14,6 +14,11 @@ public class CustomizedCar{
     public CustomizedCar(CarContent carContent, double totalPrice) {
         this.carContent = new CarContent(carContent);
         this.totalPrice = totalPrice;
+    }
+
+    public CustomizedCar(CustomizedCar customizedCar) {
+        this.carContent = new CarContent(customizedCar.carContent);
+        this.totalPrice = customizedCar.totalPrice;
     }
 
     public CarContent getCarContent() {
