@@ -1,9 +1,6 @@
 package carconf.controller;
 
-import carconf.savers.HTMLSaverImpl;
-import carconf.savers.PDFSaverImpl;
 import carconf.savers.SaverInterface;
-import carconf.savers.WindowSaverImpl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -40,12 +37,6 @@ public class ChooseDataSaverSceneController {
 
     @FXML
     void initialize(){
-        pdfSaverButton.setOnAction(e -> saver = new PDFSaverImpl());
-
-        htmlSaverButton.setOnAction(e -> saver = new HTMLSaverImpl());
-
-        windowSaverButton.setOnAction(e -> saver = new WindowSaverImpl());
-
 
         goBackButton.setOnAction(e -> {
 
