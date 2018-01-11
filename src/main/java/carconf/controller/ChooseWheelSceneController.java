@@ -69,7 +69,7 @@ public class ChooseWheelSceneController {
         for (int i = 0; i < wheelsByLevelId.size(); ++i) {
             Wheel wheel = wheelsByLevelId.get(i);
             WheelInfo wheelInfo = new WheelInfo(wheel);
-            wheelInfo.getRadioButton().setUserData(i);
+            wheelInfo.getRadioButton().setUserData(wheel.getWheelId());
             wheelInfo.getRadioButton().setToggleGroup(radiosGroup);
             colorsHBox.getChildren().add(wheelInfo);
         }

@@ -69,7 +69,7 @@ public class ChooseColorSceneController {
         for (int i = 0; i < colorsByModelId.size(); ++i) {
             Color color = colorsByModelId.get(i);
             ColorInfo colorInfo = new ColorInfo(color);
-            colorInfo.getRadioButton().setUserData(i);
+            colorInfo.getRadioButton().setUserData(color.getColorId());
             colorInfo.getRadioButton().setToggleGroup(radiosGroup);
             colorsHBox.getChildren().add(colorInfo);
         }
