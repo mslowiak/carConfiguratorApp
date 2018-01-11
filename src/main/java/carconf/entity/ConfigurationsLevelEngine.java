@@ -10,25 +10,25 @@ import javax.persistence.*;
 )
 public class ConfigurationsLevelEngine implements CarPart {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int config_ID;
 
     @ManyToOne
-    @JoinColumn(name="engine_ID")
+    @JoinColumn(name = "engine_ID")
     private Engine engine;
 
     @ManyToOne
-    @JoinColumn(name="level_ID")
+    @JoinColumn(name = "level_ID")
     private EquipmentLevel equipmentLevel;
 
     public ConfigurationsLevelEngine() {
     }
 
     public ConfigurationsLevelEngine(ConfigurationsLevelEngine configurationsLevelEngine) {
-        if(configurationsLevelEngine != null){
+        if (configurationsLevelEngine != null) {
             this.config_ID = configurationsLevelEngine.getConfig_ID();
-            this.engine = configurationsLevelEngine.getEngine();
-            this.equipmentLevel = configurationsLevelEngine.getEquipmentLevel();
+            this.engine = new Engine(configurationsLevelEngine.getEngine());
+            this.equipmentLevel = new EquipmentLevel(configurationsLevelEngine.getEquipmentLevel());
         }
     }
 
