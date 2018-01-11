@@ -1,16 +1,18 @@
 package carconf.controller;
 
+import carconf.savers.HTMLSaverImpl;
+import carconf.savers.PDFSaverImpl;
+import carconf.savers.SaverInterface;
+import carconf.savers.WindowSaverImpl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 
 public class ChooseDataSaverSceneController {
     private Scene scene;
-    private ToggleGroup radiosGroup;
-
+    private SaverInterface saver;
     @FXML
     private Label topLabel;
 
@@ -18,13 +20,13 @@ public class ChooseDataSaverSceneController {
     private HBox saversHBox;
 
     @FXML
-    private Button firstTypeButton;
+    private Button pdfSaverButton;
 
     @FXML
-    private Button secondTypeButton;
+    private Button htmlSaverButton;
 
     @FXML
-    private Button thirdTypeButton;
+    private Button windowSaverButton;
 
     @FXML
     private Button goBackButton;
@@ -38,7 +40,11 @@ public class ChooseDataSaverSceneController {
 
     @FXML
     void initialize(){
-        radiosGroup = new ToggleGroup();
+        pdfSaverButton.setOnAction(e -> saver = new PDFSaverImpl());
+
+        htmlSaverButton.setOnAction(e -> saver = new HTMLSaverImpl());
+
+        windowSaverButton.setOnAction(e -> saver = new WindowSaverImpl());
 
 
         goBackButton.setOnAction(e -> {
@@ -46,6 +52,11 @@ public class ChooseDataSaverSceneController {
         });
 
         endConfigButton.setOnAction(e ->{
+            if(saver != null) {
+                saver.saveCarConfiguration();
+            } else {
+                errorLabel.setText("Sposób zapisania danych nie został wybrany");
+            }
         });
     }
 
@@ -53,6 +64,6 @@ public class ChooseDataSaverSceneController {
         this.scene = scene;
     }
 
-    public void displayOptionForSavingConfiguration(){
-    }
+//    public void displayOptionForSavingConfiguration(){
+//    }
 }

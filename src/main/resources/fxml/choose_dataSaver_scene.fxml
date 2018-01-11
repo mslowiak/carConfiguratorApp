@@ -37,18 +37,18 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="firstTypeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" text="FirstType">
+                        <Button fx:id="pdfSaverButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" text="Zapisz jako PDF">
                            <font>
-                              <Font size="36.0" />
+                              <Font size="30.0" />
                            </font></Button>
-                        <Button fx:id="SecondTypeIndex" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" text="SecondType" GridPane.rowIndex="1">
+                        <Button fx:id="htmlSaverButton" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" text="Wyświetl jako plik HTML" GridPane.rowIndex="1">
                            <font>
-                              <Font size="36.0" />
+                              <Font size="30.0" />
                            </font>
                         </Button>
-                        <Button fx:id="thirdTypeButton" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" text="ThirdType" GridPane.rowIndex="2">
+                        <Button fx:id="windowSaverButton" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="400.0" text="Wyświetl podsumowanie" GridPane.rowIndex="2">
                            <font>
-                              <Font size="36.0" />
+                              <Font size="30.0" />
                            </font>
                         </Button>
                      </children>
@@ -74,9 +74,9 @@
                <font>
                   <Font size="24.0" />
                </font></Button>
-            <Label fx:id="errorLabel" contentDisplay="CENTER" prefHeight="17.0" prefWidth="498.0" textAlignment="CENTER" textFill="#fc0000" GridPane.columnIndex="1">
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="498.0" textAlignment="CENTER" textFill="#fc0000" GridPane.columnIndex="1">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="19.0" />
                </font></Label>
          </children>
       </GridPane>

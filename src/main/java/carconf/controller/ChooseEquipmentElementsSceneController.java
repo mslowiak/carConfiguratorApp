@@ -66,7 +66,7 @@ public class ChooseEquipmentElementsSceneController {
                     .forEach(elem -> App.car = new EquipmentElementCarDecorator(App.car, elem));
 
             ChooseDataSaverScene choosedataSaverScene = new ChooseDataSaverScene(scene);
-            choosedataSaverScene.getDataSaverSceneController().displayOptionForSavingConfiguration();
+    //        choosedataSaverScene.getDataSaverSceneController().displayOptionForSavingConfiguration();
         });
     }
 
