@@ -16,6 +16,7 @@ public class ChooseEquipmentElementsScene {
         this.scene = scene;
         setScene();
         setController();
+        chooseEquipmentElementsSceneController.displayElements();
     }
 
     private void setController() {

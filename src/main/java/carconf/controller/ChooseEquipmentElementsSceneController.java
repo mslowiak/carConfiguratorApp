@@ -2,10 +2,11 @@ package carconf.controller;
 
 import carconf.App;
 import carconf.car_assembling.car_decorators.EquipmentElementCarDecorator;
+import carconf.car_assembling.car_object_storage.CustomizedCar;
 import carconf.element.ElementTypeInfo;
 import carconf.entity.EquipmentElement;
-import carconf.entity.EquipmentType;
 import carconf.scene.ChooseDataSaverScene;
+import carconf.scene.ChooseWheelScene;
 import carconf.service.impl.EquipmentElementServiceImpl;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,6 +24,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ChooseEquipmentElementsSceneController {
+
     private Scene scene;
 
     @FXML
@@ -38,35 +40,36 @@ public class ChooseEquipmentElementsSceneController {
     private Button goNextButton;
 
     @FXML
-    void initialize(){
+    void initialize() {
         goBackButton.setOnAction(e -> {
-
+            App.car = new CustomizedCar(App.carCaretaker.loadCustomizedCar());
+            new ChooseWheelScene(scene);
         });
 
         goNextButton.setOnAction(e -> {
             List<Integer> listOfChecked = new ArrayList<>();
             ObservableList<Node> children = equipmentElemsVBox.getChildren();
-            for (Node n : children){
+            for (Node n : children) {
                 ElementTypeInfo el = (ElementTypeInfo) n;
                 List<CheckBox> checkBoxList = el.getCheckBoxList();
-                for(CheckBox ch : checkBoxList){
-                    if(ch.isSelected()){
+                for (CheckBox ch : checkBoxList) {
+                    if (ch.isSelected()) {
                         listOfChecked.add((Integer) ch.getUserData());
                     }
                 }
             }
             EquipmentElementServiceImpl equipmentElementService = new EquipmentElementServiceImpl();
             List<EquipmentElement> choseElements = new ArrayList<>();
-            for (Integer i : listOfChecked){
+            for (Integer i : listOfChecked) {
                 choseElements.addAll(equipmentElementService.getEquipmentElementsByElemAndModelId(i,
                         App.car.getCarContent().getEquipmentLevel().getLevelId()));
             }
 
-            choseElements.stream()
+            choseElements
                     .forEach(elem -> App.car = new EquipmentElementCarDecorator(App.car, elem));
 
+            App.carCaretaker.saveCustomizedCar(App.car);
             ChooseDataSaverScene choosedataSaverScene = new ChooseDataSaverScene(scene);
-            choosedataSaverScene.getDataSaverSceneController().displayOptionForSavingConfiguration();
         });
     }
 
@@ -79,12 +82,12 @@ public class ChooseEquipmentElementsSceneController {
         List<EquipmentElement> equipmentElements =
                 equipmentElementService.getEquipmentElementsByLevelId(App.car.getCarContent().getEquipmentLevel().getLevelId());
         Set<Integer> set = new HashSet<>();
-        for (EquipmentElement e : equipmentElements){
+        for (EquipmentElement e : equipmentElements) {
             set.add(e.getEquipmentType().getType_ID());
         }
         List<Integer> uniqueTypeId = new ArrayList<>(set);
 
-        for (int i = 0; i < uniqueTypeId.size(); ++i){
+        for (int i = 0; i < uniqueTypeId.size(); ++i) {
             int finalI = i;
             List<EquipmentElement> collectedElements = equipmentElements.stream()
                     .filter(e -> e.getEquipmentType().getType_ID() == uniqueTypeId.get(finalI))

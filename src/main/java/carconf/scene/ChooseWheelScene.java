@@ -16,6 +16,7 @@ public class ChooseWheelScene {
         this.scene = scene;
         setScene();
         setController();
+        chooseWheelSceneController.displayWheels();
     }
 
     private void setController() {

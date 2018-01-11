@@ -5,7 +5,6 @@ import carconf.car_assembling.car_decorators.ModelCarDecorator;
 import carconf.element.CarInfo;
 import carconf.entity.Model;
 import carconf.scene.ChooseEquipmentLevelScene;
-import carconf.service.ModelService;
 import carconf.service.impl.ModelServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -35,16 +34,16 @@ public class ChooseModelSceneController {
 
 
     @FXML
-    void initialize(){
+    void initialize() {
         radiosGroup = new ToggleGroup();
-        goNextButton.setOnAction(e ->{
-            if(radiosGroup.getSelectedToggle() != null){
+        goNextButton.setOnAction(e -> {
+            if (radiosGroup.getSelectedToggle() != null) {
                 int modelID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
-                ChooseEquipmentLevelScene chooseEquipmentLevelScene = new ChooseEquipmentLevelScene(scene);
-                chooseEquipmentLevelScene.getEquipmentLevelSceneController().setChoseCarModel(modelID);
                 ModelServiceImpl modelService = new ModelServiceImpl();
                 App.car = new ModelCarDecorator(App.car, modelService.getModelById(modelID).get(0));
-            }else{
+                App.carCaretaker.saveCustomizedCar(App.car);
+                ChooseEquipmentLevelScene chooseEquipmentLevelScene = new ChooseEquipmentLevelScene(scene);
+            } else {
                 errorLabel.setText("Model nie został wybrany");
             }
         });
@@ -54,13 +53,12 @@ public class ChooseModelSceneController {
         this.scene = scene;
     }
 
-    public void displayCars(){
+    public void displayCars() {
         ModelServiceImpl modelService = new ModelServiceImpl();
         List<Model> allModels = modelService.getAllModels();
         int column = 0;
         int row = 0;
-        for (int i=0; i<allModels.size(); ++i){
-            Model model = allModels.get(i);
+        for (Model model : allModels) {
             CarInfo carInfo = new CarInfo(model.getBasicPrice(),
                     model.getBrand() + " " + model.getName(),
                     model.getPhotoUrl());
@@ -68,7 +66,7 @@ public class ChooseModelSceneController {
             carInfo.getRadioButton().setToggleGroup(radiosGroup);
             gridPane.add(carInfo, row, column);
             row++;
-            if(row == 3){
+            if (row == 3) {
                 row = 0;
                 column++;
             }

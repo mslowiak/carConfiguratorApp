@@ -17,6 +17,7 @@ public class ChooseDataSaverScene {
         this.scene = scene;
         setScene();
         setController();
+        chooseDataSaverSceneController.displayOptionForSavingConfiguration();
     }
 
     private void setController() {

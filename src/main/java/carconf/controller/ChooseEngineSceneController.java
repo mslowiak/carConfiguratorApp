@@ -2,10 +2,12 @@ package carconf.controller;
 
 import carconf.App;
 import carconf.car_assembling.car_decorators.EngineCarDecorator;
+import carconf.car_assembling.car_object_storage.CustomizedCar;
 import carconf.element.EngineInfo;
 import carconf.entity.ConfigurationsLevelEngine;
 import carconf.entity.Engine;
 import carconf.scene.ChooseColorScene;
+import carconf.scene.ChooseEquipmentLevelScene;
 import carconf.service.impl.ConfigurationsLevelEngineServiceImpl;
 import carconf.service.impl.EngineServiceImpl;
 import javafx.fxml.FXML;
@@ -21,7 +23,6 @@ public class ChooseEngineSceneController {
 
     private Scene scene;
     private ToggleGroup radiosGroup;
-    private int choseEquipmentLevel;
 
     @FXML
     private Label topLabel;
@@ -39,21 +40,22 @@ public class ChooseEngineSceneController {
     private Label errorLabel;
 
     @FXML
-    void initialize(){
+    void initialize() {
         radiosGroup = new ToggleGroup();
 
         goBackButton.setOnAction(e -> {
-
+            App.car = new CustomizedCar(App.carCaretaker.loadCustomizedCar());
+            new ChooseEquipmentLevelScene(scene);
         });
 
         goNextButton.setOnAction(e -> {
-            if(radiosGroup.getSelectedToggle() != null) {
+            if (radiosGroup.getSelectedToggle() != null) {
                 int engineID = Integer.parseInt(radiosGroup.getSelectedToggle().getUserData().toString());
-                ChooseColorScene colorScene = new ChooseColorScene(scene);
-                colorScene.getChooseColorSceneController().displayColors();
                 EngineServiceImpl engineService = new EngineServiceImpl();
                 App.car = new EngineCarDecorator(App.car, engineService.getEngineByEngineId(engineID).get(0));
-            }else{
+                App.carCaretaker.saveCustomizedCar(App.car);
+                ChooseColorScene colorScene = new ChooseColorScene(scene);
+            } else {
                 errorLabel.setText("Silnik nie został wybrany");
             }
         });
@@ -63,22 +65,17 @@ public class ChooseEngineSceneController {
         this.scene = scene;
     }
 
-    public void displayEngines(){
+    public void displayEngines() {
         ConfigurationsLevelEngineServiceImpl configurationsLevelEngineService =
                 new ConfigurationsLevelEngineServiceImpl();
         List<ConfigurationsLevelEngine> configurationsByLevelId =
-                configurationsLevelEngineService.getConfigurationsByLevelId(choseEquipmentLevel);
-        for(int i = 0; i < configurationsByLevelId.size(); ++i){
+                configurationsLevelEngineService.getConfigurationsByLevelId(App.car.getCarContent().getEquipmentLevel().getLevelId());
+        for (int i = 0; i < configurationsByLevelId.size(); ++i) {
             Engine engine = configurationsByLevelId.get(i).getEngine();
             EngineInfo engineInfo = new EngineInfo((i + 1) + ".", engine);
             engineInfo.getRadioButton().setUserData(engine.getEngineId());
             engineInfo.getRadioButton().setToggleGroup(radiosGroup);
             equipmentLevelsVBox.getChildren().add(engineInfo);
         }
-    }
-
-    public void setChoseEquipmentLevel(int choseEquipmentLevel) {
-        this.choseEquipmentLevel = choseEquipmentLevel;
-        displayEngines();
     }
 }

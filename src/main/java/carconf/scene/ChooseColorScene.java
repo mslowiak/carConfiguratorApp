@@ -16,6 +16,7 @@ public class ChooseColorScene {
         this.scene = scene;
         setScene();
         setController();
+        chooseColorSceneController.displayColors();
     }
 
     private void setScene() {

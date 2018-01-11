@@ -17,6 +17,7 @@ public class ChooseEngineScene {
         this.scene = scene;
         setScene();
         setController();
+        engineSceneController.displayEngines();
     }
 
     private void setScene() {
