@@ -15,6 +15,7 @@ public class CustomizedCarCaretaker {
     }
 
     public CustomizedCar loadCustomizedCar(){
+        customizedCarMementos.remove(customizedCarMementos.size() - 1);
         CustomizedCar.CustomizedCarMemento memento = customizedCarMementos.get(customizedCarMementos.size() - 1);
         return CustomizedCar.createCustomizedCar(memento);
     }
