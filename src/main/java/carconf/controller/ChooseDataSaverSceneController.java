@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
+
 public class ChooseDataSaverSceneController {
     private Scene scene;
     private SaverInterface saver;
@@ -16,10 +17,16 @@ public class ChooseDataSaverSceneController {
     private Label topLabel;
 
     @FXML
+    private Label descriptionLabel;
+
+    @FXML
     private Label priceTextLabel;
 
     @FXML
     private Label priceLabel;
+
+    @FXML
+    private javafx.scene.image.ImageView photoImageView;
 
     @FXML
     private HBox saversHBox;
