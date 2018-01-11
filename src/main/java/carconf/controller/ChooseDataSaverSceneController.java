@@ -1,5 +1,7 @@
 package carconf.controller;
 
+import carconf.savers.PdfFullSaver;
+import carconf.savers.PdfSimpleSaver;
 import carconf.savers.SaverInterface;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -14,25 +16,24 @@ public class ChooseDataSaverSceneController {
     private Label topLabel;
 
     @FXML
+    private Label priceTextLabel;
+
+    @FXML
+    private Label priceLabel;
+
+    @FXML
     private HBox saversHBox;
 
     @FXML
-    private Button pdfSaverButton;
+    private Button pdfFullSaverButton;
 
     @FXML
-    private Button htmlSaverButton;
+    private Button pdfSimpleSaverButton;
 
-    @FXML
-    private Button windowSaverButton;
 
     @FXML
     private Button goBackButton;
 
-    @FXML
-    private Button endConfigButton;
-
-    @FXML
-    private Label errorLabel;
 
 
     @FXML
@@ -42,13 +43,15 @@ public class ChooseDataSaverSceneController {
 
         });
 
-        endConfigButton.setOnAction(e ->{
-            if(saver != null) {
-                saver.saveCarConfiguration();
-            } else {
-                errorLabel.setText("Sposób zapisania danych nie został wybrany");
-            }
+        pdfFullSaverButton.setOnAction(e ->{
+            saver = new PdfFullSaver();
         });
+
+        pdfSimpleSaverButton.setOnAction(e -> {
+            saver = new PdfSimpleSaver();
+        } );
+
+        priceLabel.setText("78 000");
     }
 
     public void setScene(Scene scene) {
