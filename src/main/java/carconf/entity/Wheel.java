@@ -94,7 +94,12 @@ public class Wheel implements CarPart {
     }
 
     @Override
-    public String getItemDescription() {
-        return getDescription() + getSize() + getPrice();
+    public StringBuilder getFullItemDescription() {
+        return null;
+    }
+
+    @Override
+    public StringBuilder getShortItemDescription() {
+        return null;
     }
 }

@@ -57,7 +57,12 @@ public class ConfigurationsLevelEngine implements CarPart {
     }
 
     @Override
-    public String getItemDescription() {
-        return getEquipmentLevel().getName() + getEngine().getItemDescription();
+    public StringBuilder getFullItemDescription() {
+        return null;
+    }
+
+    @Override
+    public StringBuilder getShortItemDescription() {
+        return null;
     }
 }

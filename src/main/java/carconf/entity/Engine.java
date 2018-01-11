@@ -155,7 +155,12 @@ public class Engine implements CarPart {
     }
 
     @Override
-    public String getItemDescription() {
-        return getName() + getFuel() + getGearBox() + getCapacity() + getPowerKM() + getPowerKW() + getPrice();
+    public StringBuilder getFullItemDescription() {
+        return null;
+    }
+
+    @Override
+    public StringBuilder getShortItemDescription() {
+        return null;
     }
 }

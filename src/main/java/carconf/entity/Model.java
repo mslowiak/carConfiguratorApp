@@ -169,7 +169,12 @@ public class Model implements CarPart {
     }
 
     @Override
-    public String getItemDescription() {
-        return getBrand() + getName();
+    public StringBuilder getFullItemDescription() {
+        return null;
+    }
+
+    @Override
+    public StringBuilder getShortItemDescription() {
+        return null;
     }
 }

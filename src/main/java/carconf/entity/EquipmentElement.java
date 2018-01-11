@@ -79,7 +79,12 @@ public class EquipmentElement implements CarPart {
     }
 
     @Override
-    public String getItemDescription() {
-        return getDescription() + equipmentType.getDescription() + getPrice();
+    public StringBuilder getFullItemDescription() {
+        return null;
+    }
+
+    @Override
+    public StringBuilder getShortItemDescription() {
+        return null;
     }
 }

@@ -148,7 +148,12 @@ public class EquipmentLevel implements CarPart {
     }
 
     @Override
-    public String getItemDescription() {
-        return getName();
+    public StringBuilder getFullItemDescription() {
+        return null;
+    }
+
+    @Override
+    public StringBuilder getShortItemDescription() {
+        return null;
     }
 }

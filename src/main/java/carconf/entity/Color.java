@@ -102,7 +102,12 @@ public class Color implements CarPart {
     }
 
     @Override
-    public String getItemDescription() {
-        return getDescription() + getColorType() + getPrice();
+    public StringBuilder getFullItemDescription() {
+        return null;
+    }
+
+    @Override
+    public StringBuilder getShortItemDescription() {
+        return null;
     }
 }
