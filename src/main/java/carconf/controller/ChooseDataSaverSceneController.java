@@ -1,18 +1,11 @@
 package carconf.controller;
 
-import carconf.App;
-import carconf.car_assembling.car_decorators.WheelCarDecorator;
-import carconf.scene.ChooseEquipmentElementsScene;
-import carconf.service.impl.WheelServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
-
-import java.util.List;
 
 public class ChooseDataSaverSceneController {
     private Scene scene;
@@ -35,8 +28,8 @@ public class ChooseDataSaverSceneController {
 
     @FXML
     void initialize(){
-        radiosGroup = new ToggleGroup();
-
+//        radiosGroup = new ToggleGroup();
+//
 //        goBackButton.setOnAction(e -> {
 //
 //        });
