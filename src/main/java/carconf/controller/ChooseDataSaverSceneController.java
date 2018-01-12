@@ -1,9 +1,13 @@
 package carconf.controller;
 
+import carconf.App;
 import carconf.car_assembling.CarInformationFacade;
+import carconf.car_assembling.car_object_storage.CustomizedCar;
 import carconf.savers.PdfFullSaver;
 import carconf.savers.PdfSimpleSaver;
 import carconf.savers.SaverInterface;
+import carconf.scene.ChooseEngineScene;
+import carconf.scene.ChooseEquipmentElementsScene;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -50,12 +54,13 @@ public class ChooseDataSaverSceneController {
         carInformationFacade = new CarInformationFacade();
         descriptionLabel.setText(carInformationFacade.getFullCarDescription().toString());
 
-        priceLabel.setText(carInformationFacade.getTotalPriceByText().append(" zł").toString());
+        priceLabel.setText(carInformationFacade.getTotalPriceByText());
 
         photoImageView.setImage(carInformationFacade.getCarPhoto());
 
         goBackButton.setOnAction(e -> {
-
+            App.car = new CustomizedCar(App.carCaretaker.loadCustomizedCar());
+            new ChooseEquipmentElementsScene(scene);
         });
 
         pdfFullSaverButton.setOnAction(e ->{
@@ -68,7 +73,6 @@ public class ChooseDataSaverSceneController {
             saver.saveCarConfiguration();
         } );
 
-        priceLabel.setText("78 000");
     }
 
     public void setScene(Scene scene) {
