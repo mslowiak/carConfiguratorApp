@@ -1,5 +1,6 @@
 package carconf.controller;
 
+import carconf.car_assembling.CarInformationFacade;
 import carconf.savers.PdfFullSaver;
 import carconf.savers.PdfSimpleSaver;
 import carconf.savers.SaverInterface;
@@ -45,6 +46,12 @@ public class ChooseDataSaverSceneController {
 
     @FXML
     void initialize(){
+        CarInformationFacade carInformationFacade = new CarInformationFacade();
+        descriptionLabel.setText(carInformationFacade.getFullCarDescription().toString());
+
+        priceLabel.setText(carInformationFacade.getTotalPriceByText().append(" zł").toString());
+
+        photoImageView.setImage(carInformationFacade.getCarPhoto());
 
         goBackButton.setOnAction(e -> {
 
