@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 public class ChooseDataSaverSceneController {
     private Scene scene;
     private SaverInterface saver;
+    private CarInformationFacade carInformationFacade;
     @FXML
     private Label topLabel;
 
@@ -46,7 +47,7 @@ public class ChooseDataSaverSceneController {
 
     @FXML
     void initialize(){
-        CarInformationFacade carInformationFacade = new CarInformationFacade();
+        carInformationFacade = new CarInformationFacade();
         descriptionLabel.setText(carInformationFacade.getFullCarDescription().toString());
 
         priceLabel.setText(carInformationFacade.getTotalPriceByText().append(" zł").toString());
@@ -59,10 +60,12 @@ public class ChooseDataSaverSceneController {
 
         pdfFullSaverButton.setOnAction(e ->{
             saver = new PdfFullSaver();
+            saver.saveCarConfiguration();
         });
 
         pdfSimpleSaverButton.setOnAction(e -> {
             saver = new PdfSimpleSaver();
+            saver.saveCarConfiguration();
         } );
 
         priceLabel.setText("78 000");
