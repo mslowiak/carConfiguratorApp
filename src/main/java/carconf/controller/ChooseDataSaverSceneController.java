@@ -6,19 +6,22 @@ import carconf.car_assembling.car_object_storage.CustomizedCar;
 import carconf.savers.PdfFullSaver;
 import carconf.savers.PdfSimpleSaver;
 import carconf.savers.SaverInterface;
-import carconf.scene.ChooseEngineScene;
 import carconf.scene.ChooseEquipmentElementsScene;
+import com.itextpdf.text.DocumentException;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 
 public class ChooseDataSaverSceneController {
     private Scene scene;
     private SaverInterface saver;
-    private CarInformationFacade carInformationFacade;
+
     @FXML
     private Label topLabel;
 
@@ -51,12 +54,12 @@ public class ChooseDataSaverSceneController {
 
     @FXML
     void initialize(){
-        carInformationFacade = new CarInformationFacade();
+        CarInformationFacade carInformationFacade = new CarInformationFacade();
         descriptionLabel.setText(carInformationFacade.getFullCarDescription().toString());
 
         priceLabel.setText(carInformationFacade.getTotalPriceByText());
 
-        photoImageView.setImage(carInformationFacade.getCarPhoto());
+        photoImageView.setImage(carInformationFacade.getCarColorPhoto());
 
         goBackButton.setOnAction(e -> {
             App.car = new CustomizedCar(App.carCaretaker.loadCustomizedCar());
@@ -64,13 +67,29 @@ public class ChooseDataSaverSceneController {
         });
 
         pdfFullSaverButton.setOnAction(e ->{
-            saver = new PdfFullSaver();
-            saver.saveCarConfiguration();
+            saver = new PdfFullSaver(carInformationFacade);
+            try {
+                saver.saveCarConfiguration();
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            } catch (DocumentException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         });
 
         pdfSimpleSaverButton.setOnAction(e -> {
-            saver = new PdfSimpleSaver();
-            saver.saveCarConfiguration();
+            saver = new PdfSimpleSaver(carInformationFacade);
+            try {
+                saver.saveCarConfiguration();
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            } catch (DocumentException e1) {
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         } );
 
     }
@@ -79,6 +98,4 @@ public class ChooseDataSaverSceneController {
         this.scene = scene;
     }
 
-//    public void displayOptionForSavingConfiguration(){
-//    }
 }
