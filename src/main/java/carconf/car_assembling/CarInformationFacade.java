@@ -122,11 +122,15 @@ public class CarInformationFacade {
         return new Image(App.car.getCarContent().getColor().getPhotoUrl());
     }
 
-    public String getCarColorPhotoStringURL(){
+    public String getCarColorPhotoStringPath(){
         return App.car.getCarContent().getColor().getPhotoUrl();
     }
 
     public Image getCarWheelPhoto(){
         return new Image(App.car.getCarContent().getWheel().getPhotoUrl());
+    }
+
+    public String getCarWheelPhotoStringPath(){
+        return App.car.getCarContent().getWheel().getPhotoUrl();
     }
 }
