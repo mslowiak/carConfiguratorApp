@@ -8,6 +8,13 @@ import java.text.DecimalFormat;
 
 public class CarInformationFacade {
 
+    public StringBuilder getCarModel(){
+        StringBuilder sb = new StringBuilder();
+        Model model = App.car.getCarContent().getModel();
+        sb.append(model.getName()).append(" ").append(model.getBrand());
+        return sb;
+    }
+
     public StringBuilder getFullCarDescription(){
         StringBuilder sb = new StringBuilder();
 
