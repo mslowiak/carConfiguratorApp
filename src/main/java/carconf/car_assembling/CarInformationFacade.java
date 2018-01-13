@@ -4,6 +4,7 @@ import carconf.App;
 import carconf.entity.*;
 import javafx.scene.image.Image;
 
+import java.net.URL;
 import java.text.DecimalFormat;
 
 public class CarInformationFacade {
@@ -119,6 +120,10 @@ public class CarInformationFacade {
 
     public Image getCarColorPhoto(){
         return new Image(App.car.getCarContent().getColor().getPhotoUrl());
+    }
+
+    public String getCarColorPhotoStringURL(){
+        return App.car.getCarContent().getColor().getPhotoUrl();
     }
 
     public Image getCarWheelPhoto(){
