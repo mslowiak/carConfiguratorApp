@@ -30,4 +30,4 @@ Make your own configuration of the car. After that you can export data about you
 
 ### Authors
 Marcin Słowiak - [mslowiak](https://github.com/mslowiak) </br>
-Andrzej Knapik - [knapika](https://github.com/knapika)
+Andrzej Knapik
